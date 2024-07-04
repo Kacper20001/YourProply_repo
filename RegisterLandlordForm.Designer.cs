@@ -179,7 +179,6 @@ namespace YourProply
             btnRegister.TabIndex = 7;
             btnRegister.Text = "Zarejestruj";
             btnRegister.UseVisualStyleBackColor = false;
-            btnRegister.Click += btnRegister_Click;
             // 
             // txtLastName
             // 
@@ -200,7 +199,7 @@ namespace YourProply
             label6.Name = "label6";
             label6.Size = new Size(91, 23);
             label6.TabIndex = 8;
-            label6.Text = "Naziwsko:";
+            label6.Text = "Nazwisko:";
             // 
             // txtEmail
             // 

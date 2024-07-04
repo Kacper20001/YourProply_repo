@@ -7,27 +7,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YourProply.Views;
 
 namespace YourProply
 {
-    public partial class RegisterLandlordForm : Form
+    public partial class RegisterLandlordForm : Form, IRegisterView
     {
         public RegisterLandlordForm()
         {
             InitializeComponent();
+            btnRegister.Click += (s, e) => Register?.Invoke(this, EventArgs.Empty);
         }
+
+        public event EventHandler Register;
+        public string UserName => txtUserName.Text;
+
+        public string FirstName => txtFirstName.Text;
+
+        public string LastName => txtLastName.Text;
+
+        public DateTime DateOfBirth => dtpBirthDate.Value;
+
+        public string IdNumber => txtIdNumber.Text;
+
+        public string Email => txtEmail.Text;
+
+        public string Password => txtPassword.Text;
+
+        public string ConfirmPassword => txtConfirmPassword.Text;
+
+        public string Street => txtStreet.Text;
+
+        public string Number => txtHouseNumber.Text;
+
+        public string City => txtCity.Text;
+
+        public string PostalCode => txtPostalCode.Text;
+
+        public string Province => txtProvince.Text;
+
+        public string State => txtState.Text;
+
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
+
+
 
         private void label4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Start start = new Start();
+            Login start = new Login();
             start.Show();
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         private bool ValidateForm()
         {
             if (string.IsNullOrWhiteSpace(txtUserName.Text) ||

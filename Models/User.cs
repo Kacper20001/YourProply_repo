@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace YourProply.Entities
 {
@@ -15,7 +10,9 @@ namespace YourProply.Entities
 
     public abstract class User
     {
-        public User(int userId, string userName, string firstName, string lastName, string email, string password, int idNumber, Address address)
+        public User() { }
+
+        public User(int userId, string userName, string firstName, string lastName, string email, string password, int idNumber, Address address, DateTime dateOfBirth)
         {
             UserId = userId;
             UserName = userName;
@@ -25,6 +22,7 @@ namespace YourProply.Entities
             Password = password;
             IdNumber = idNumber;
             Address = address;
+            DateOfBirth = dateOfBirth;
         }
 
         [Key]
@@ -40,6 +38,7 @@ namespace YourProply.Entities
         public string LastName { get; set; }
 
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -50,9 +49,12 @@ namespace YourProply.Entities
 
         [Required]
         public Address Address { get; set; }
+
         [Required]
         public UserType UserType { get; set; }
-
-        public abstract void ChangePassword(string actualPassword, string newPassword);
+        
+        [Required]
+        [DataType(DataType.Date)]
+        public DateTime DateOfBirth { get; set; }
     }
 }

@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace YourProply.Entities
 {
@@ -33,12 +35,9 @@ namespace YourProply.Entities
         [Required]
         public DateTime EndDate { get; set; }
 
-        [Required]
-        [Range(0, 100000)]
+
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal MonthlyRent { get; set; }
-        public static void GenerateAgreement()
-        {
-            // Generowanie umowy najmu
-        }
+
     }
 }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YourProply.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace YourProply.Entities
 {
     public class Property
     {
+        public Property() { }
+
         public Property(int propertyId, string name, string description, Address address, bool isAvailable, string propertyType, double area, int numberOfRooms)
         {
             PropertyId = propertyId;
@@ -38,9 +34,10 @@ namespace YourProply.Entities
         public bool IsAvailable { get; set; }
 
         [Required]
-        public string PropertyType { get; set; } 
-        public double Area { get; set; } 
-        
-        public int NumberOfRooms { get; set; } 
+        public string PropertyType { get; set; }
+
+        public double Area { get; set; }
+
+        public int NumberOfRooms { get; set; }
     }
 }

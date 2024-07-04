@@ -1,6 +1,6 @@
 ﻿namespace YourProply
 {
-    partial class Start
+    partial class Login
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label5 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            label4 = new Label();
-            button1 = new Button();
-            label5 = new Label();
+            LoginTxt = new TextBox();
+            PasswordTxt = new TextBox();
+            registerBtn = new Label();
+            btnLogin = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -53,6 +53,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(312, 470);
             panel1.TabIndex = 0;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Nirmala UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(47, 43);
+            label5.Name = "label5";
+            label5.Size = new Size(185, 38);
+            label5.TabIndex = 2;
+            label5.Text = "LOGOWANIE";
             // 
             // pictureBox1
             // 
@@ -98,79 +109,68 @@
             label3.TabIndex = 3;
             label3.Text = "Hasło:";
             // 
-            // textBox1
+            // LoginTxt
             // 
-            textBox1.BackColor = Color.FromArgb(15, 15, 15);
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(633, 156);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(242, 30);
-            textBox1.TabIndex = 4;
+            LoginTxt.BackColor = Color.FromArgb(15, 15, 15);
+            LoginTxt.BorderStyle = BorderStyle.FixedSingle;
+            LoginTxt.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LoginTxt.ForeColor = Color.White;
+            LoginTxt.Location = new Point(633, 156);
+            LoginTxt.Name = "LoginTxt";
+            LoginTxt.Size = new Size(242, 30);
+            LoginTxt.TabIndex = 4;
             // 
-            // textBox2
+            // PasswordTxt
             // 
-            textBox2.BackColor = Color.FromArgb(15, 15, 15);
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox2.ForeColor = Color.White;
-            textBox2.Location = new Point(633, 220);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(242, 30);
-            textBox2.TabIndex = 5;
+            PasswordTxt.BackColor = Color.FromArgb(15, 15, 15);
+            PasswordTxt.BorderStyle = BorderStyle.FixedSingle;
+            PasswordTxt.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            PasswordTxt.ForeColor = Color.White;
+            PasswordTxt.Location = new Point(633, 220);
+            PasswordTxt.Name = "PasswordTxt";
+            PasswordTxt.Size = new Size(242, 30);
+            PasswordTxt.TabIndex = 5;
             // 
-            // label4
+            // registerBtn
             // 
-            label4.AutoSize = true;
-            label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Font = new Font("Nirmala UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.CornflowerBlue;
-            label4.Location = new Point(570, 355);
-            label4.Name = "label4";
-            label4.Size = new Size(305, 22);
-            label4.TabIndex = 6;
-            label4.Text = "Nie masz konta? Kliknij, aby się zarejstrować";
-            label4.Click += label4_Click;
+            registerBtn.AutoSize = true;
+            registerBtn.BorderStyle = BorderStyle.FixedSingle;
+            registerBtn.Font = new Font("Nirmala UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            registerBtn.ForeColor = Color.CornflowerBlue;
+            registerBtn.Location = new Point(570, 355);
+            registerBtn.Name = "registerBtn";
+            registerBtn.Size = new Size(305, 22);
+            registerBtn.TabIndex = 6;
+            registerBtn.Text = "Nie masz konta? Kliknij, aby się zarejstrować";
+            registerBtn.Click += registerBtn_Click;
             // 
-            // button1
+            // btnLogin
             // 
-            button1.BackColor = Color.CornflowerBlue;
-            button1.Location = new Point(450, 268);
-            button1.Name = "button1";
-            button1.Size = new Size(425, 45);
-            button1.TabIndex = 7;
-            button1.Text = "Zaloguj";
-            button1.UseVisualStyleBackColor = false;
+            btnLogin.BackColor = Color.CornflowerBlue;
+            btnLogin.Location = new Point(450, 268);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(425, 45);
+            btnLogin.TabIndex = 7;
+            btnLogin.Text = "Zaloguj";
+            btnLogin.UseVisualStyleBackColor = false;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Nirmala UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(47, 43);
-            label5.Name = "label5";
-            label5.Size = new Size(185, 38);
-            label5.TabIndex = 2;
-            label5.Text = "LOGOWANIE";
-            // 
-            // Start
+            // Login
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(1034, 470);
-            Controls.Add(button1);
-            Controls.Add(label4);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(btnLogin);
+            Controls.Add(registerBtn);
+            Controls.Add(PasswordTxt);
+            Controls.Add(LoginTxt);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(panel1);
             Font = new Font("Nirmala UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
-            Name = "Start";
+            Name = "Login";
             Opacity = 0.9D;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
@@ -187,11 +187,11 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Label label4;
+        private TextBox LoginTxt;
+        private TextBox PasswordTxt;
+        private Label registerBtn;
         private PictureBox pictureBox1;
-        private Button button1;
+        private Button btnLogin;
         private Label label5;
     }
 }
