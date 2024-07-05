@@ -17,9 +17,12 @@ namespace YourProply
         {
             InitializeComponent();
             btnRegister.Click += (s, e) => Register?.Invoke(this, EventArgs.Empty);
+            LoginBtn.Click += (s, e) => AlreadyHaveAccountClick?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler Register;
+        public event EventHandler AlreadyHaveAccountClick;
+
         public string UserName => txtUserName.Text;
 
         public string FirstName => txtFirstName.Text;
@@ -53,62 +56,36 @@ namespace YourProply
             MessageBox.Show(message);
         }
 
-
-
-        private void label4_Click(object sender, EventArgs e)
+        public void ClearForm()
         {
-            this.Hide();
-            Login start = new Login();
-            start.Show();
-        }
-
-        
-        private bool ValidateForm()
-        {
-            if (string.IsNullOrWhiteSpace(txtUserName.Text) ||
-                string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-                string.IsNullOrWhiteSpace(txtLastName.Text) || 
-                string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                string.IsNullOrWhiteSpace(txtPassword.Text) ||
-                string.IsNullOrWhiteSpace(txtStreet.Text) ||
-                string.IsNullOrWhiteSpace(txtHouseNumber.Text) ||
-                string.IsNullOrWhiteSpace(txtCity.Text) ||
-                string.IsNullOrWhiteSpace(txtPostalCode.Text) ||
-                string.IsNullOrWhiteSpace(txtProvince.Text) ||
-                string.IsNullOrWhiteSpace(txtState.Text) ||
-                !int.TryParse(txtIdNumber.Text, out _))
-            {
-                MessageBox.Show("Proszę wypełnić wszystkie pola poprawnie.");
-                return false;
-            }
-            DateTime birthDate = dtpBirthDate.Value;
-            int age = DateTime.Now.Year - birthDate.Year;
-            if (birthDate > DateTime.Now.AddYears(-age)) age--;
-
-            if (age < 18)
-            {
-                MessageBox.Show("Użytkownik musi być pełnoletni (co najmniej 18 lat).");
-                return false;
-            }
-
-            return true;
-        }
-        private void ClearForm()
-        {
-            txtUserName.Text = "";
-            txtFirstName.Text = "";
-            txtLastName.Text = "";
+            txtUserName.Clear();
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtIdNumber.Clear();
+            txtEmail.Clear();
+            txtPassword.Clear();
+            txtConfirmPassword.Clear();
+            txtStreet.Clear();
+            txtHouseNumber.Clear();
+            txtCity.Clear();
+            txtPostalCode.Clear();
+            txtProvince.Clear();
+            txtState.Clear();
             dtpBirthDate.Value = DateTime.Now;
-            txtIdNumber.Text = "";
-            txtEmail.Text = "";
-            txtPassword.Text = "";
-            txtConfirmPassword.Text = "";
-            txtStreet.Text = "";
-            txtHouseNumber.Text = "";
-            txtCity.Text = "";
-            txtPostalCode.Text = "";
-            txtProvince.Text = "";
-            txtState.Text = "";
+        }
+        public new void Show()
+        {
+            base.Show();
+        }
+
+        public new void Hide()
+        {
+            base.Hide();
+        }
+        public new void Close()
+        {
+            base.Close();
         }
     }
+
 }

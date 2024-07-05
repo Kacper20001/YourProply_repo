@@ -38,7 +38,7 @@ namespace YourProply
             label3 = new Label();
             txtUserName = new TextBox();
             txtFirstName = new TextBox();
-            label4 = new Label();
+            LoginBtn = new Label();
             btnRegister = new Button();
             txtLastName = new TextBox();
             label6 = new Label();
@@ -94,13 +94,12 @@ namespace YourProply
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.icon;
-            pictureBox1.Location = new Point(12, 250);
+            pictureBox1.Location = new Point(12, 232);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(286, 250);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            pictureBox1.Visible = false;
             // 
             // label1
             // 
@@ -157,18 +156,17 @@ namespace YourProply
             txtFirstName.Size = new Size(242, 30);
             txtFirstName.TabIndex = 5;
             // 
-            // label4
+            // LoginBtn
             // 
-            label4.AutoSize = true;
-            label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Font = new Font("Nirmala UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.CornflowerBlue;
-            label4.Location = new Point(448, 662);
-            label4.Name = "label4";
-            label4.Size = new Size(195, 22);
-            label4.TabIndex = 6;
-            label4.Text = "Masz już konto? Zaloguj się";
-            label4.Click += label4_Click;
+            LoginBtn.AutoSize = true;
+            LoginBtn.BorderStyle = BorderStyle.FixedSingle;
+            LoginBtn.Font = new Font("Nirmala UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LoginBtn.ForeColor = Color.CornflowerBlue;
+            LoginBtn.Location = new Point(448, 662);
+            LoginBtn.Name = "LoginBtn";
+            LoginBtn.Size = new Size(195, 22);
+            LoginBtn.TabIndex = 6;
+            LoginBtn.Text = "Masz już konto? Zaloguj się";
             // 
             // btnRegister
             // 
@@ -423,11 +421,12 @@ namespace YourProply
             // 
             // dtpBirthDate
             // 
-            dtpBirthDate.CalendarForeColor = Color.Black;
-            dtpBirthDate.CalendarMonthBackground = SystemColors.WindowText;
+            dtpBirthDate.CalendarForeColor = Color.White;
+            dtpBirthDate.CalendarMonthBackground = Color.Black;
             dtpBirthDate.CalendarTitleBackColor = Color.AntiqueWhite;
             dtpBirthDate.CalendarTitleForeColor = Color.White;
             dtpBirthDate.CalendarTrailingForeColor = Color.Green;
+            dtpBirthDate.Format = DateTimePickerFormat.Short;
             dtpBirthDate.Location = new Point(631, 183);
             dtpBirthDate.Name = "dtpBirthDate";
             dtpBirthDate.Size = new Size(242, 30);
@@ -442,7 +441,7 @@ namespace YourProply
             Controls.Add(dtpBirthDate);
             Controls.Add(txtState);
             Controls.Add(label17);
-            Controls.Add(label4);
+            Controls.Add(LoginBtn);
             Controls.Add(txtHouseNumber);
             Controls.Add(label12);
             Controls.Add(txtStreet);
@@ -492,7 +491,7 @@ namespace YourProply
         private Label label3;
         private TextBox txtUserName;
         private TextBox txtFirstName;
-        private Label label4;
+        private Label LoginBtn;
         private PictureBox pictureBox1;
         private Button btnRegister;
         private Label label5;

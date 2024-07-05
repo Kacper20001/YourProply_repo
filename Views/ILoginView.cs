@@ -10,7 +10,13 @@ namespace YourProply.Views
     {
         string UserName { get; }
         string Password { get; }
+
         event EventHandler LoginEvent;
+        event EventHandler RegisterClick;
+
         void ShowMessage(string message);
+        void Show();
+        void Hide();
+        void Close();
     }
 }

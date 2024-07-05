@@ -1,27 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourProply.Entities;
 using YourProply.Views;
-using System.Linq;
-
 
 namespace YourProply.Presenters
 {
     public class RegisterPresenter
     {
         private readonly IRegisterView _view;
-        private readonly YourProplyDbContext _context; 
-
+        private readonly YourProplyDbContext _context;
 
         public RegisterPresenter(IRegisterView view, YourProplyDbContext context)
         {
             _view = view;
             _context = context;
             _view.Register += OnRegister;
-         }
+            _view.AlreadyHaveAccountClick += OnAlreadyHaveAccountClick;
+        }
+
         private void OnRegister(object sender, EventArgs e)
         {
             if (_view.Password != _view.ConfirmPassword)
@@ -38,6 +34,7 @@ namespace YourProply.Presenters
                 _view.ShowMessage("User with this username or email already exists.");
                 return;
             }
+
             var address = new Address
             {
                 Street = _view.Street,
@@ -47,6 +44,7 @@ namespace YourProply.Presenters
                 Province = _view.Province,
                 State = _view.State
             };
+
             _context.Addresses.Add(address);
             _context.SaveChanges();
 
@@ -58,12 +56,26 @@ namespace YourProply.Presenters
                 Email = _view.Email,
                 Password = _view.Password,
                 Address = address,
-                UserType = UserType.Landlord
+                UserType = UserType.Landlord,
+                DateOfBirth = _view.DateOfBirth
             };
+
             _context.Users.Add(landlord);
             _context.SaveChanges();
 
             _view.ShowMessage("Registration successful!");
+            _view.ClearForm();
+
+            OnAlreadyHaveAccountClick(sender, e);
+        }
+
+        private void OnAlreadyHaveAccountClick(object sender, EventArgs e)
+        {
+            var loginView = new Login();
+            var loginPresenter = new LoginPresenter(loginView, _context);
+            _view.Hide();
+            loginView.FormClosed += (s, args) => _view.Show();
+            loginView.ShowDialog();
         }
     }
 }

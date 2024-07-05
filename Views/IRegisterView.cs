@@ -24,6 +24,11 @@ namespace YourProply.Views
         string State { get; }
 
         event EventHandler Register;
+        event EventHandler AlreadyHaveAccountClick;
         void ShowMessage(string message);
+        void ClearForm();
+        void Show(); 
+        void Hide(); 
+        void Close(); 
     }
 }
