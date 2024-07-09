@@ -2,6 +2,7 @@
 using System.Linq;
 using YourProply.Entities;
 using YourProply.Views;
+using YourProply;
 
 namespace YourProply.Presenters
 {
@@ -29,8 +30,11 @@ namespace YourProply.Presenters
                 return;
             }
 
-            // Przekierowanie do głównego widoku aplikacji
-            // ...
+            var landlordMenu = new LandlordMenu(user);
+            var landlordMenuPresenter = new LandlordMenuPresenter(landlordMenu, _context, user); // Przekazanie użytkownika
+            _view.Hide();
+            landlordMenu.FormClosed += (s, args) => _view.Show();
+            landlordMenu.Show();
         }
 
         private void OnRegisterClick(object sender, EventArgs e)

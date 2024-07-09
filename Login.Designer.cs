@@ -152,6 +152,7 @@
             btnLogin.TabIndex = 7;
             btnLogin.Text = "Zaloguj";
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // Login
             // 
