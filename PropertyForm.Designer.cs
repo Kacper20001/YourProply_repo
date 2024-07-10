@@ -56,6 +56,8 @@
             txtArea = new TextBox();
             label7 = new Label();
             btnReturn = new Button();
+            textBox1 = new TextBox();
+            txtPropertyType = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -110,7 +112,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.CornflowerBlue;
-            label2.Location = new Point(436, 110);
+            label2.Location = new Point(440, 88);
             label2.Name = "label2";
             label2.Size = new Size(191, 23);
             label2.TabIndex = 2;
@@ -120,7 +122,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.CornflowerBlue;
-            label3.Location = new Point(576, 146);
+            label3.Location = new Point(575, 172);
             label3.Name = "label3";
             label3.Size = new Size(51, 23);
             label3.TabIndex = 3;
@@ -132,7 +134,7 @@
             txtPropertyName.BorderStyle = BorderStyle.FixedSingle;
             txtPropertyName.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPropertyName.ForeColor = Color.White;
-            txtPropertyName.Location = new Point(633, 108);
+            txtPropertyName.Location = new Point(632, 86);
             txtPropertyName.Name = "txtPropertyName";
             txtPropertyName.Size = new Size(242, 30);
             txtPropertyName.TabIndex = 4;
@@ -143,7 +145,7 @@
             txtPropertyDescription.BorderStyle = BorderStyle.FixedSingle;
             txtPropertyDescription.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPropertyDescription.ForeColor = Color.White;
-            txtPropertyDescription.Location = new Point(633, 146);
+            txtPropertyDescription.Location = new Point(632, 172);
             txtPropertyDescription.Multiline = true;
             txtPropertyDescription.Name = "txtPropertyDescription";
             txtPropertyDescription.Size = new Size(242, 109);
@@ -152,7 +154,7 @@
             // btnSave
             // 
             btnSave.BackColor = Color.CornflowerBlue;
-            btnSave.Location = new Point(450, 622);
+            btnSave.Location = new Point(449, 648);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(425, 45);
             btnSave.TabIndex = 7;
@@ -165,7 +167,7 @@
             txtProvince.BorderStyle = BorderStyle.FixedSingle;
             txtProvince.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtProvince.ForeColor = Color.White;
-            txtProvince.Location = new Point(633, 408);
+            txtProvince.Location = new Point(632, 434);
             txtProvince.Name = "txtProvince";
             txtProvince.Size = new Size(242, 30);
             txtProvince.TabIndex = 25;
@@ -174,7 +176,7 @@
             // 
             label14.AutoSize = true;
             label14.ForeColor = Color.CornflowerBlue;
-            label14.Location = new Point(497, 410);
+            label14.Location = new Point(496, 436);
             label14.Name = "label14";
             label14.Size = new Size(130, 23);
             label14.TabIndex = 23;
@@ -186,7 +188,7 @@
             txtState.BorderStyle = BorderStyle.FixedSingle;
             txtState.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtState.ForeColor = Color.White;
-            txtState.Location = new Point(633, 444);
+            txtState.Location = new Point(632, 470);
             txtState.Name = "txtState";
             txtState.Size = new Size(242, 30);
             txtState.TabIndex = 31;
@@ -195,7 +197,7 @@
             // 
             label17.AutoSize = true;
             label17.ForeColor = Color.CornflowerBlue;
-            label17.Location = new Point(580, 446);
+            label17.Location = new Point(579, 472);
             label17.Name = "label17";
             label17.Size = new Size(47, 23);
             label17.TabIndex = 30;
@@ -205,7 +207,7 @@
             // 
             label16.AutoSize = true;
             label16.ForeColor = Color.CornflowerBlue;
-            label16.Location = new Point(558, 338);
+            label16.Location = new Point(557, 364);
             label16.Name = "label16";
             label16.Size = new Size(69, 23);
             label16.TabIndex = 20;
@@ -217,7 +219,7 @@
             txtCity.BorderStyle = BorderStyle.FixedSingle;
             txtCity.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCity.ForeColor = Color.White;
-            txtCity.Location = new Point(633, 336);
+            txtCity.Location = new Point(632, 362);
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(242, 30);
             txtCity.TabIndex = 21;
@@ -226,7 +228,7 @@
             // 
             label15.AutoSize = true;
             label15.ForeColor = Color.CornflowerBlue;
-            label15.Location = new Point(498, 374);
+            label15.Location = new Point(497, 400);
             label15.Name = "label15";
             label15.Size = new Size(129, 23);
             label15.TabIndex = 22;
@@ -238,7 +240,7 @@
             txtPostalCode.BorderStyle = BorderStyle.FixedSingle;
             txtPostalCode.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPostalCode.ForeColor = Color.White;
-            txtPostalCode.Location = new Point(633, 372);
+            txtPostalCode.Location = new Point(632, 398);
             txtPostalCode.Name = "txtPostalCode";
             txtPostalCode.Size = new Size(242, 30);
             txtPostalCode.TabIndex = 24;
@@ -247,7 +249,7 @@
             // 
             label13.AutoSize = true;
             label13.ForeColor = Color.CornflowerBlue;
-            label13.Location = new Point(573, 264);
+            label13.Location = new Point(572, 290);
             label13.Name = "label13";
             label13.Size = new Size(54, 23);
             label13.TabIndex = 26;
@@ -259,7 +261,7 @@
             txtStreet.BorderStyle = BorderStyle.FixedSingle;
             txtStreet.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtStreet.ForeColor = Color.White;
-            txtStreet.Location = new Point(633, 264);
+            txtStreet.Location = new Point(632, 290);
             txtStreet.Name = "txtStreet";
             txtStreet.Size = new Size(242, 30);
             txtStreet.TabIndex = 27;
@@ -268,7 +270,7 @@
             // 
             label12.AutoSize = true;
             label12.ForeColor = Color.CornflowerBlue;
-            label12.Location = new Point(464, 300);
+            label12.Location = new Point(463, 326);
             label12.Name = "label12";
             label12.Size = new Size(163, 23);
             label12.TabIndex = 28;
@@ -280,7 +282,7 @@
             txtHouseNumber.BorderStyle = BorderStyle.FixedSingle;
             txtHouseNumber.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtHouseNumber.ForeColor = Color.White;
-            txtHouseNumber.Location = new Point(633, 300);
+            txtHouseNumber.Location = new Point(632, 326);
             txtHouseNumber.Name = "txtHouseNumber";
             txtHouseNumber.Size = new Size(242, 30);
             txtHouseNumber.TabIndex = 29;
@@ -289,7 +291,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.CornflowerBlue;
-            label4.Location = new Point(514, 486);
+            label4.Location = new Point(513, 512);
             label4.Name = "label4";
             label4.Size = new Size(113, 23);
             label4.TabIndex = 32;
@@ -301,8 +303,11 @@
             comboBoxAvailability.FlatStyle = FlatStyle.Popup;
             comboBoxAvailability.ForeColor = Color.White;
             comboBoxAvailability.FormattingEnabled = true;
-            comboBoxAvailability.Location = new Point(633, 483);
+            comboBoxAvailability.Location = new Point(632, 509);
             comboBoxAvailability.Name = "comboBoxAvailability";
+            comboBoxAvailability.Items.AddRange(new object[] {
+    "true",
+    "false"});
             comboBoxAvailability.Size = new Size(242, 31);
             comboBoxAvailability.TabIndex = 33;
             // 
@@ -312,7 +317,7 @@
             txtRooms.BorderStyle = BorderStyle.FixedSingle;
             txtRooms.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtRooms.ForeColor = Color.White;
-            txtRooms.Location = new Point(633, 562);
+            txtRooms.Location = new Point(632, 588);
             txtRooms.Name = "txtRooms";
             txtRooms.Size = new Size(242, 30);
             txtRooms.TabIndex = 37;
@@ -321,7 +326,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.CornflowerBlue;
-            label6.Location = new Point(511, 562);
+            label6.Location = new Point(510, 588);
             label6.Name = "label6";
             label6.Size = new Size(116, 23);
             label6.TabIndex = 36;
@@ -333,7 +338,7 @@
             txtArea.BorderStyle = BorderStyle.FixedSingle;
             txtArea.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtArea.ForeColor = Color.White;
-            txtArea.Location = new Point(633, 526);
+            txtArea.Location = new Point(632, 552);
             txtArea.Name = "txtArea";
             txtArea.Size = new Size(242, 30);
             txtArea.TabIndex = 35;
@@ -342,7 +347,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.CornflowerBlue;
-            label7.Location = new Point(463, 528);
+            label7.Location = new Point(462, 554);
             label7.Name = "label7";
             label7.Size = new Size(169, 23);
             label7.TabIndex = 34;
@@ -358,12 +363,35 @@
             btnReturn.Text = "Powrót";
             btnReturn.UseVisualStyleBackColor = false;
             // 
+            // textBox1
+            // 
+            textBox1.BackColor = Color.FromArgb(15, 15, 15);
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBox1.ForeColor = Color.White;
+            textBox1.Location = new Point(632, 122);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(242, 30);
+            textBox1.TabIndex = 40;
+            // 
+            // txtPropertyType
+            // 
+            txtPropertyType.AutoSize = true;
+            txtPropertyType.ForeColor = Color.CornflowerBlue;
+            txtPropertyType.Location = new Point(582, 122);
+            txtPropertyType.Name = "txtPropertyType";
+            txtPropertyType.Size = new Size(44, 23);
+            txtPropertyType.TabIndex = 39;
+            txtPropertyType.Text = "Typ:";
+            // 
             // PropertyForm
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(1034, 708);
+            Controls.Add(textBox1);
+            Controls.Add(txtPropertyType);
             Controls.Add(btnReturn);
             Controls.Add(txtRooms);
             Controls.Add(label6);
@@ -433,5 +461,7 @@
         private TextBox txtArea;
         private Label label7;
         private Button btnReturn;
+        private TextBox textBox1;
+        private Label txtPropertyType;
     }
 }

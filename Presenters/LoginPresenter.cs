@@ -31,7 +31,7 @@ namespace YourProply.Presenters
             }
 
             var landlordMenu = new LandlordMenu(user);
-            var landlordMenuPresenter = new LandlordMenuPresenter(landlordMenu, _context, user); // Przekazanie użytkownika
+            var landlordMenuPresenter = new LandlordMenuPresenter(landlordMenu, _context, user);
             _view.Hide();
             landlordMenu.FormClosed += (s, args) => _view.Show();
             landlordMenu.Show();

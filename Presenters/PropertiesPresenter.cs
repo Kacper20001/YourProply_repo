@@ -28,19 +28,18 @@ namespace YourProply.Presenters
 
         private void LoadProperties()
         {
-            var landlord = _context.Users.OfType<Landlord>()
-                .Include(l => l.Properties)
-                .FirstOrDefault(l => l.UserId == _loggedInUser.UserId);
-            if (landlord != null)
-            {
-                _view.SetProperties(landlord.Properties.ToList());
-            }
+            var properties = _context.Properties
+               .Include(p => p.Address)
+               .Where(p => p.UserId == _loggedInUser.UserId)
+               .ToList();
+
+            _view.SetProperties(properties);
         }
         private void OnAddPropertyClick(object sender, EventArgs e) 
         {
             var propertyForm = new PropertyForm();
+            var propertyPresenter = new PropertyFormPresenter(propertyForm, _context, _loggedInUser);
             propertyForm.FormClosed += (s, args) => LoadProperties();
-            _view.ShowMessage("Pomyślnie dodano");
             propertyForm.ShowDialog();
         }
         private void OnEditPropertyClick(object sender, EventArgs e)
@@ -49,8 +48,8 @@ namespace YourProply.Presenters
             if (selectedProperty != null)
             {
                 var propertyForm = new PropertyForm(selectedProperty);
+                var propertyPresenter = new PropertyFormPresenter(propertyForm, _context, _loggedInUser);
                 propertyForm.FormClosed += (s, args) => LoadProperties();
-                _view.ShowMessage("Pomyślnie edytowano");
                 propertyForm.ShowDialog();
             }
             else
@@ -66,7 +65,6 @@ namespace YourProply.Presenters
             {
                 _context.Properties.Remove(selectedProperty);
                 _context.SaveChanges();
-                _view.ShowMessage("Pomyślnie usunięto");
                 LoadProperties();
             }
             else

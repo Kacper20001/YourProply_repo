@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YourProply.Entities;
 
@@ -11,9 +12,11 @@ using YourProply.Entities;
 namespace YourProply.Migrations
 {
     [DbContext(typeof(YourProplyDbContext))]
-    partial class YourProplyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240710142655_Initialize")]
+    partial class Initialize
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -32,7 +32,7 @@ namespace YourProply
         }
         public Property GetSelectedProperty()
         {
-            return dataGridProperties.SelectedRows.Count > 0 ? dataGridProperties.SelectedRows[0].DataBoundItem as Property : null;
+            return dataGridProperties.SelectedRows.Count == 1 ? dataGridProperties.SelectedRows[0].DataBoundItem as Property : null;
         }
         public void ShowMessage(string message)
         {
@@ -52,6 +52,5 @@ namespace YourProply
         {
             base.Close();
         }
-
     }
 }

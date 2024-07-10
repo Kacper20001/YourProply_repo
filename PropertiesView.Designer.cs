@@ -54,7 +54,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(312, 577);
+            panel1.Size = new Size(312, 588);
             panel1.TabIndex = 0;
             // 
             // btnDeleteProperty
@@ -123,11 +123,12 @@
             // 
             // dataGridProperties
             // 
+            dataGridProperties.BackgroundColor = Color.Black;
             dataGridProperties.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridProperties.Location = new Point(387, 96);
+            dataGridProperties.Location = new Point(363, 96);
             dataGridProperties.Name = "dataGridProperties";
             dataGridProperties.RowHeadersWidth = 51;
-            dataGridProperties.Size = new Size(650, 391);
+            dataGridProperties.Size = new Size(845, 462);
             dataGridProperties.TabIndex = 8;
             // 
             // btnBack
@@ -145,7 +146,7 @@
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
-            ClientSize = new Size(1109, 577);
+            ClientSize = new Size(1244, 588);
             Controls.Add(btnBack);
             Controls.Add(dataGridProperties);
             Controls.Add(label1);

@@ -24,31 +24,43 @@ namespace YourProply
             _property = property ?? new Property();
             _address = _property.Address ?? new Address();
             btnSave.Click += (s, e) => SaveClick?.Invoke(this, EventArgs.Empty);
+            LoadPropertyData();
         }
-        public Property Property 
+        private void LoadPropertyData()
+        {
+            if (_property != null)
+            {
+                txtPropertyName.Text = _property.Name;
+                txtPropertyDescription.Text = _property.Description;
+                txtArea.Text = _property.Area.ToString();
+                comboBoxAvailability.SelectedItem = _property.IsAvailable ? "Yes" : "No";
+                txtRooms.Text = _property.NumberOfRooms.ToString();
+                txtStreet.Text = _address.Street;
+                txtHouseNumber.Text = _address.Number;
+                txtCity.Text = _address.City;
+                txtPostalCode.Text = _address.PostalCode;
+                txtProvince.Text = _address.Province;
+                txtState.Text = _address.State;
+                txtPropertyType.Text = _property.PropertyType; 
+            }
+        }
+        public Property Property
         {
             get
             {
                 _property.Name = txtPropertyName.Text;
                 _property.Description = txtPropertyDescription.Text;
-                _property.Address = _address;
-                _property.Area = double.TryParse(txtArea.Text, out double area) ? area: 0;
+                _property.Area = double.TryParse(txtArea.Text, out double area) ? area : 0;
                 _property.IsAvailable = comboBoxAvailability.SelectedItem != null && comboBoxAvailability.SelectedItem.ToString() == "Yes";
                 _property.NumberOfRooms = int.TryParse(txtRooms.Text, out int rooms) ? rooms : 0;
+                _property.PropertyType = txtPropertyType.Text;
+                _property.Address = Address;
                 return _property;
             }
             set
             {
                 _property = value;
-                if (_property != null)
-                {
-                    txtPropertyName.Text = _property.Name;
-                    txtPropertyDescription.Text = _property.Description;
-                    Address = _property.Address;
-                    txtArea.Text = _property.Area.ToString();
-                    comboBoxAvailability.SelectedItem = _property.IsAvailable ? "Yes" : "No";
-                    txtRooms.Text = _property.NumberOfRooms.ToString();
-                }
+                LoadPropertyData();
             }
         }
         public Address Address
@@ -77,6 +89,7 @@ namespace YourProply
                 }
             }
         }
+
         public void ShowMessage(string message)
         {
             MessageBox.Show(message);

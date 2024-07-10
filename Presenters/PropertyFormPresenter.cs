@@ -12,27 +12,39 @@ namespace YourProply.Presenters
     {
         private readonly IPropertyFormView _view;
         private readonly YourProplyDbContext _context;
+        private readonly User _loggedInUser;
 
-        public PropertyFormPresenter(IPropertyFormView view, YourProplyDbContext context)
+        public PropertyFormPresenter(IPropertyFormView view, YourProplyDbContext context, User loggedInUser)
         {
             _view = view;
             _context = context;
+            _loggedInUser = loggedInUser;
             _view.SaveClick += OnSaveClick;
         }
         private void OnSaveClick(object sender, EventArgs e)
         {
             var property = _view.Property;
-            if (property.PropertyId == 0)
+            var address = _view.Address;
+            if (property != null && address != null)
             {
-                _context.Properties.Add(property);
+                property.Address = address;
+                property.UserId = _loggedInUser.UserId; // Przypisanie UserId
+                if (property.PropertyId == 0)
+                {
+                    _context.Properties.Add(property);
+                }
+                else
+                {
+                    _context.Properties.Update(property);
+                }
+                    _context.SaveChanges();
+                    _view.ShowMessage("Property saved successfully.");
+                    _view.Close();
             }
             else
             {
-                _context.Properties.Update(property);
+                _view.ShowMessage("Please fill in all required fields.");
             }
-            _context.SaveChanges();
-            _view.ShowMessage("Nieruchomość zapisana pomyślnie.");
-            _view.Close();
         }
     }
 }

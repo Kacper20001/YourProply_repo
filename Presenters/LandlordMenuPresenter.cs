@@ -12,15 +12,15 @@ namespace YourProply.Presenters
     {
         private readonly ILandlordMenu _view;
         private readonly YourProplyDbContext _context;
-        private readonly User _loggedInUser; // Zalogowany użytkownik
+        private readonly User _loggedInUser;
 
-        public LandlordMenuPresenter(ILandlordMenu view, YourProplyDbContext context, User loggedInUser) // Przekazanie użytkownika
+        public LandlordMenuPresenter(ILandlordMenu view, YourProplyDbContext context, User loggedInUser)
         {
             _view = view;
             _context = context;
             _view.YourPropertiesClick += ShowPropertiesView;
             _view.YourAccountClick += ShowAccountView;
-            _loggedInUser = loggedInUser; // Przypisanie użytkownika
+            _loggedInUser = loggedInUser; 
         }
         private void ShowPropertiesView(object sender, EventArgs e)
         {

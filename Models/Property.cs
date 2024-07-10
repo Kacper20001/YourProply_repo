@@ -39,5 +39,7 @@ namespace YourProply.Entities
         public double Area { get; set; }
 
         public int NumberOfRooms { get; set; }
+        [Required]
+        public int UserId { get; set; }
     }
 }

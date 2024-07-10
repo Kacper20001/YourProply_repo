@@ -12,8 +12,8 @@ using YourProply.Entities;
 namespace YourProply.Migrations
 {
     [DbContext(typeof(YourProplyDbContext))]
-    [Migration("20240704001957_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240710140024_NazwaMigracji")]
+    partial class NazwaMigracji
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -203,6 +203,9 @@ namespace YourProply.Migrations
                     b.Property<string>("PropertyType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("PropertyId");
 
