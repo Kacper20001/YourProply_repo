@@ -18,9 +18,9 @@ namespace YourProply.Presenters
         {
             _view = view;
             _context = context;
+            _loggedInUser = loggedInUser ?? throw new ArgumentNullException(nameof(loggedInUser));
             _view.YourPropertiesClick += ShowPropertiesView;
             _view.YourAccountClick += ShowAccountView;
-            _loggedInUser = loggedInUser; 
         }
         private void ShowPropertiesView(object sender, EventArgs e)
         {
@@ -30,13 +30,14 @@ namespace YourProply.Presenters
             propertiesView.FormClosed += (s, args) => _view.Show();
             propertiesView.Show();
         }
+
         private void ShowAccountView(object sender, EventArgs e)
         {
-            var accountView = new LandlordAccountView(_view.LoggedInUser);
+            var accountView = new LandlordAccountView(_loggedInUser, _context);
+            var accountPresenter = new LandlordAccountPresenter(accountView, _context, _loggedInUser);
             accountView.FormClosed += (s, args) => _view.Show();
             _view.Hide();
-            accountView.Show(); 
-
+            accountView.Show();
         }
     }
 }

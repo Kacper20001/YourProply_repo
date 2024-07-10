@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YourProply.Entities
 {
@@ -49,6 +50,8 @@ namespace YourProply.Entities
 
         [Required]
         public Address Address { get; set; }
+        [ForeignKey("AddressId")]
+        public int AddressId { get; set; }
 
         [Required]
         public UserType UserType { get; set; }

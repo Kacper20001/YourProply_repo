@@ -49,6 +49,8 @@ namespace YourProply.Entities
             modelBuilder.Entity<User>()
                 .HasOne(u => u.Address)
                 .WithMany()
+                .HasForeignKey(u => u.AddressId)
+
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);

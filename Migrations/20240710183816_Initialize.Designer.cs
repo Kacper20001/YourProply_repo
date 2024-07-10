@@ -12,8 +12,8 @@ using YourProply.Entities;
 namespace YourProply.Migrations
 {
     [DbContext(typeof(YourProplyDbContext))]
-    [Migration("20240710140024_NazwaMigracji")]
-    partial class NazwaMigracji
+    [Migration("20240710183816_Initialize")]
+    partial class Initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
