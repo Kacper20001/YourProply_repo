@@ -35,6 +35,7 @@
             ntnLogout = new Button();
             btnYourProperties = new Button();
             btnYourAccount = new Button();
+            btnAddTenant = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -100,7 +101,7 @@
             btnYourProperties.BackColor = Color.CornflowerBlue;
             btnYourProperties.Location = new Point(411, 136);
             btnYourProperties.Name = "btnYourProperties";
-            btnYourProperties.Size = new Size(143, 77);
+            btnYourProperties.Size = new Size(149, 118);
             btnYourProperties.TabIndex = 8;
             btnYourProperties.Text = "Twoje nieruchomości";
             btnYourProperties.UseVisualStyleBackColor = false;
@@ -108,12 +109,22 @@
             // btnYourAccount
             // 
             btnYourAccount.BackColor = Color.CornflowerBlue;
-            btnYourAccount.Location = new Point(929, 136);
+            btnYourAccount.Location = new Point(861, 136);
             btnYourAccount.Name = "btnYourAccount";
-            btnYourAccount.Size = new Size(143, 77);
+            btnYourAccount.Size = new Size(149, 118);
             btnYourAccount.TabIndex = 9;
             btnYourAccount.Text = "Panel użytkownika";
             btnYourAccount.UseVisualStyleBackColor = false;
+            // 
+            // btnAddTenant
+            // 
+            btnAddTenant.BackColor = Color.CornflowerBlue;
+            btnAddTenant.Location = new Point(636, 136);
+            btnAddTenant.Name = "btnAddTenant";
+            btnAddTenant.Size = new Size(149, 118);
+            btnAddTenant.TabIndex = 10;
+            btnAddTenant.Text = "Dodaj Najemce";
+            btnAddTenant.UseVisualStyleBackColor = false;
             // 
             // LandlordMenu
             // 
@@ -121,6 +132,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(1111, 636);
+            Controls.Add(btnAddTenant);
             Controls.Add(btnYourAccount);
             Controls.Add(btnYourProperties);
             Controls.Add(ntnLogout);
@@ -148,5 +160,6 @@
         private Button ntnLogout;
         private Button btnYourProperties;
         private Button btnYourAccount;
+        private Button btnAddTenant;
     }
 }

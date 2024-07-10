@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace YourProply.Presenters
             _loggedInUser = loggedInUser ?? throw new ArgumentNullException(nameof(loggedInUser));
             _view.YourPropertiesClick += ShowPropertiesView;
             _view.YourAccountClick += ShowAccountView;
+            _view.AddTenantClick += ShowAddTenantView; 
         }
         private void ShowPropertiesView(object sender, EventArgs e)
         {
@@ -38,6 +40,16 @@ namespace YourProply.Presenters
             accountView.FormClosed += (s, args) => _view.Show();
             _view.Hide();
             accountView.Show();
+        }
+        private void ShowAddTenantView(object sender, EventArgs e) 
+        {
+            var availableProperties = _context.Properties
+                .Include(p => p.Address)
+                .Where(p => p.UserId == _loggedInUser.UserId).ToList();
+            var addTenantView = new AddTenantView(availableProperties);
+            var addTenantPresenter = new AddTenantPresenter(addTenantView, _context, _loggedInUser);
+            addTenantView.FormClosed += (s, args) => _view.Show();
+            addTenantView.Show();
         }
     }
 }
