@@ -13,17 +13,20 @@ namespace YourProply.Presenters
         private readonly ILandlordMenu _view;
         private readonly YourProplyDbContext _context;
         private readonly User _loggedInUser;
+        private readonly OpenAIService _openAIService;
 
-        public LandlordMenuPresenter(ILandlordMenu view, YourProplyDbContext context, User loggedInUser)
+        public LandlordMenuPresenter(ILandlordMenu view, YourProplyDbContext context, User loggedInUser, OpenAIService openAIService)
         {
             _view = view;
             _context = context;
             _loggedInUser = loggedInUser ?? throw new ArgumentNullException(nameof(loggedInUser));
+            _openAIService = openAIService;
             _view.YourPropertiesClick += ShowPropertiesView;
             _view.YourAccountClick += ShowAccountView;
             _view.AddTenantClick += ShowAddTenantView;
             _view.GenerateLeaseAgreementClick += btnGenerateLeaseAgreement_Click;
             _view.SendEmailClick += ShowSendEmailView;
+            _view.OpenChatbotClick += ShowChatbotView;
         }
 
         private void ShowPropertiesView(object sender, EventArgs e)
@@ -73,6 +76,14 @@ namespace YourProply.Presenters
             sendEmailView.FormClosed += (s, args) => _view.Show();
             _view.Hide();
             sendEmailView.Show();
+        }
+        private void ShowChatbotView(object sender, EventArgs e)
+        {
+            var chatbotView = new ChatbotView();
+            var chatbotPresenter = new ChatbotPresenter(chatbotView, _openAIService);
+            chatbotView.FormClosed += (s, args) => _view.Show();
+            _view.Hide();
+            chatbotView.Show();
         }
     }
 }

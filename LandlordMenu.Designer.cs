@@ -38,6 +38,7 @@
             btnAddTenant = new Button();
             btnGenerateLeaseAgreement = new Button();
             btnSendEmail = new Button();
+            btnChatAI = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -150,12 +151,23 @@
             btnSendEmail.Text = "Wyślij email";
             btnSendEmail.UseVisualStyleBackColor = false;
             // 
+            // btnChatAI
+            // 
+            btnChatAI.BackColor = Color.CornflowerBlue;
+            btnChatAI.Location = new Point(861, 291);
+            btnChatAI.Name = "btnChatAI";
+            btnChatAI.Size = new Size(149, 118);
+            btnChatAI.TabIndex = 13;
+            btnChatAI.Text = "Wirtualny asystent";
+            btnChatAI.UseVisualStyleBackColor = false;
+            // 
             // LandlordMenu
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(1111, 636);
+            Controls.Add(btnChatAI);
             Controls.Add(btnSendEmail);
             Controls.Add(btnGenerateLeaseAgreement);
             Controls.Add(btnAddTenant);
@@ -189,5 +201,6 @@
         private Button btnAddTenant;
         private Button btnGenerateLeaseAgreement;
         private Button btnSendEmail;
+        private Button btnChatAI;
     }
 }

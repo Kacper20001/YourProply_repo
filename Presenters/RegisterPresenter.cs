@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using YourProply.Entities;
+using YourProply.Services;
 using YourProply.Views;
 
 namespace YourProply.Presenters
@@ -9,9 +10,11 @@ namespace YourProply.Presenters
     {
         private readonly IRegisterView _view;
         private readonly YourProplyDbContext _context;
+        private readonly OpenAIService _openAIService;
 
-        public RegisterPresenter(IRegisterView view, YourProplyDbContext context)
+        public RegisterPresenter(IRegisterView view, YourProplyDbContext context, OpenAIService openAIService)
         {
+            _openAIService = openAIService;
             _view = view;
             _context = context;
             _view.Register += OnRegister;
@@ -72,7 +75,7 @@ namespace YourProply.Presenters
         private void OnAlreadyHaveAccountClick(object sender, EventArgs e)
         {
             var loginView = new Login();
-            var loginPresenter = new LoginPresenter(loginView, _context);
+            var loginPresenter = new LoginPresenter(loginView, _context, _openAIService);
             _view.Hide();
             loginView.FormClosed += (s, args) => _view.Show();
             loginView.ShowDialog();
