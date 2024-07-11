@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourProply.Entities;
 using YourProply.Views;
 
@@ -27,7 +24,7 @@ namespace YourProply.Presenters
             var existingUser = _context.Users
                 .FirstOrDefault(u => u.UserName == _view.UserName || u.Email == _view.Email);
 
-            if (existingUser != null)
+            if (existingUser != null && existingUser.UserId != _view.UserId)
             {
                 _view.ShowMessage("User with this username or email already exists.");
                 return;
@@ -40,37 +37,40 @@ namespace YourProply.Presenters
                 return;
             }
 
-            var address = new Address
+            var tenant = _context.Users.OfType<Tenant>().FirstOrDefault(t => t.Email == _view.Email) ?? new Tenant();
+            var address = tenant.Address ?? new Address();
+
+            address.Street = _view.Street;
+            address.Number = _view.HouseNumber;
+            address.City = _view.City;
+            address.PostalCode = _view.PostalCode;
+            address.Province = _view.Province;
+            address.State = _view.State;
+
+            tenant.UserName = _view.UserName;
+            tenant.FirstName = _view.FirstName;
+            tenant.LastName = _view.LastName;
+            tenant.Email = _view.Email;
+            tenant.Password = _view.Password;
+            tenant.Address = address;
+            tenant.UserType = UserType.Tenant;
+            tenant.DateOfBirth = _view.DateOfBirth;
+            tenant.Property = selectedProperty;
+            tenant.LandlordId = _loggedInUser.UserId;
+
+            if (tenant.UserId == 0)
             {
-                Street = selectedProperty.Address.Street,
-                Number = selectedProperty.Address.Number,
-                City = selectedProperty.Address.City,
-                PostalCode = selectedProperty.Address.PostalCode,
-                Province = selectedProperty.Address.Province,
-                State = selectedProperty.Address.State
-            };
-
-            var tenant = new Tenant
+                _context.Users.Add(tenant);
+            }
+            else
             {
-                UserName = _view.UserName,
-                FirstName = _view.FirstName,
-                LastName = _view.LastName,
-                Email = _view.Email,
-                Password = _view.Password,
-                Address = address,
-                UserType = UserType.Tenant,
-                DateOfBirth = _view.DateOfBirth,
-                Property = selectedProperty,
-                LandlordId = _loggedInUser.UserId
+                _context.Users.Update(tenant);
+            }
 
-            };
-
-            _context.Users.Add(tenant);
             _context.SaveChanges();
 
-            _view.ShowMessage("Tenant added successfully.");
+            _view.ShowMessage("Tenant added/updated successfully.");
             _view.Close();
-
         }
     }
 }

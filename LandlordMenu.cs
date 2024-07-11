@@ -22,15 +22,15 @@ namespace YourProply
             _loggedInUser = user;
             btnYourProperties.Click += (s, e) => YourPropertiesClick?.Invoke(this, EventArgs.Empty);
             btnYourAccount.Click += (s, e) => YourAccountClick?.Invoke(this, EventArgs.Empty);
-            btnAddTenant.Click += (s, e) => AddTenantClick?.Invoke(this, EventArgs.Empty);
             btnGenerateLeaseAgreement.Click += (s, e) => GenerateLeaseAgreementClick?.Invoke(this, EventArgs.Empty);
             btnSendEmail.Click += (s, e) => SendEmailClick?.Invoke(this, EventArgs.Empty);
             btnChatAI.Click += (s, e) => OpenChatbotClick?.Invoke(this, EventArgs.Empty);
-            btnLogout.Click += (s, e) => LogoutClick?.Invoke(this, EventArgs.Empty); 
+            btnLogout.Click += (s, e) => LogoutClick?.Invoke(this, EventArgs.Empty);
+            btnManageUsers.Click += (s, e) => ManageUsersClick?.Invoke(this, EventArgs.Empty);
 
 
         }
-
+        public event EventHandler ManageUsersClick;
         public event EventHandler YourPropertiesClick;
         public event EventHandler YourAccountClick;
         public event EventHandler AddTenantClick;

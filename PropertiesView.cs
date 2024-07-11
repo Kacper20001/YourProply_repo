@@ -57,10 +57,5 @@ namespace YourProply
         {
             base.Hide();
         }
-
-        public new void Close()
-        {
-            base.Close();
-        }
     }
 }

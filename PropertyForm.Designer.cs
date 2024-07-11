@@ -56,8 +56,8 @@
             txtArea = new TextBox();
             label7 = new Label();
             btnReturn = new Button();
-            textBox1 = new TextBox();
-            txtPropertyType = new Label();
+            txtPropertyType = new TextBox();
+            label8 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -71,7 +71,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(312, 708);
+            panel1.Size = new Size(312, 724);
             panel1.TabIndex = 0;
             // 
             // label5
@@ -303,11 +303,9 @@
             comboBoxAvailability.FlatStyle = FlatStyle.Popup;
             comboBoxAvailability.ForeColor = Color.White;
             comboBoxAvailability.FormattingEnabled = true;
+            comboBoxAvailability.Items.AddRange(new object[] { "true", "false" });
             comboBoxAvailability.Location = new Point(632, 509);
             comboBoxAvailability.Name = "comboBoxAvailability";
-            comboBoxAvailability.Items.AddRange(new object[] {
-    "true",
-    "false"});
             comboBoxAvailability.Size = new Size(242, 31);
             comboBoxAvailability.TabIndex = 33;
             // 
@@ -360,37 +358,37 @@
             btnReturn.Name = "btnReturn";
             btnReturn.Size = new Size(87, 38);
             btnReturn.TabIndex = 38;
-            btnReturn.Text = "Powrót";
+            btnReturn.Text = "Zamknij";
             btnReturn.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = Color.FromArgb(15, 15, 15);
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.White;
-            textBox1.Location = new Point(632, 122);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(242, 30);
-            textBox1.TabIndex = 40;
             // 
             // txtPropertyType
             // 
-            txtPropertyType.AutoSize = true;
-            txtPropertyType.ForeColor = Color.CornflowerBlue;
-            txtPropertyType.Location = new Point(582, 122);
+            txtPropertyType.BackColor = Color.FromArgb(15, 15, 15);
+            txtPropertyType.BorderStyle = BorderStyle.FixedSingle;
+            txtPropertyType.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPropertyType.ForeColor = Color.White;
+            txtPropertyType.Location = new Point(632, 127);
             txtPropertyType.Name = "txtPropertyType";
-            txtPropertyType.Size = new Size(44, 23);
-            txtPropertyType.TabIndex = 39;
-            txtPropertyType.Text = "Typ:";
+            txtPropertyType.Size = new Size(242, 30);
+            txtPropertyType.TabIndex = 40;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.ForeColor = Color.CornflowerBlue;
+            label8.Location = new Point(582, 129);
+            label8.Name = "label8";
+            label8.Size = new Size(44, 23);
+            label8.TabIndex = 41;
+            label8.Text = "Typ:";
             // 
             // PropertyForm
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
-            ClientSize = new Size(1034, 708);
-            Controls.Add(textBox1);
+            ClientSize = new Size(1058, 724);
+            Controls.Add(label8);
             Controls.Add(txtPropertyType);
             Controls.Add(btnReturn);
             Controls.Add(txtRooms);
@@ -461,7 +459,7 @@
         private TextBox txtArea;
         private Label label7;
         private Button btnReturn;
-        private TextBox textBox1;
-        private Label txtPropertyType;
+        private TextBox txtPropertyType;
+        private Label label8;
     }
 }

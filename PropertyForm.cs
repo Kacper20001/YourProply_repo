@@ -15,6 +15,8 @@ namespace YourProply
     public partial class PropertyForm : Form, IPropertyFormView
     {
         public event EventHandler SaveClick;
+        public event EventHandler CloseClick;
+
         private Property _property;
         private Address _address;
 
@@ -24,6 +26,7 @@ namespace YourProply
             _property = property ?? new Property();
             _address = _property.Address ?? new Address();
             btnSave.Click += (s, e) => SaveClick?.Invoke(this, EventArgs.Empty);
+            btnReturn.Click += (s, e) => CloseClick?.Invoke(this, EventArgs.Empty);
             LoadPropertyData();
         }
         private void LoadPropertyData()

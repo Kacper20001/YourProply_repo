@@ -23,11 +23,12 @@ namespace YourProply.Presenters
             _openAIService = openAIService;
             _view.YourPropertiesClick += ShowPropertiesView;
             _view.YourAccountClick += ShowAccountView;
-            _view.AddTenantClick += ShowAddTenantView;
             _view.GenerateLeaseAgreementClick += btnGenerateLeaseAgreement_Click;
             _view.SendEmailClick += ShowSendEmailView;
             _view.OpenChatbotClick += ShowChatbotView;
             _view.LogoutClick += Logout;
+            _view.ManageUsersClick += ShowUsersView;
+
         }
 
         private void ShowPropertiesView(object sender, EventArgs e)
@@ -94,5 +95,14 @@ namespace YourProply.Presenters
             loginView.FormClosed += (s, args) => _view.Show();
             loginView.Show();
         }
+        private void ShowUsersView(object sender, EventArgs e)
+        {
+            var usersView = new UsersView(_loggedInUser);
+            var usersPresenter = new UsersPresenter(usersView, _context, _loggedInUser);
+            _view.Hide();
+            usersView.FormClosed += (s, args) => _view.Show();
+            usersView.Show();
+        }
+
     }
 }

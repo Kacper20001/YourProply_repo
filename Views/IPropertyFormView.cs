@@ -10,6 +10,7 @@ namespace YourProply.Views
     public interface IPropertyFormView
     {
         event EventHandler SaveClick;
+        event EventHandler CloseClick;
         Property Property { get; set; }
         Address Address { get; set; }
 

@@ -20,6 +20,7 @@ namespace YourProply.Presenters
             _context = context;
             _loggedInUser = loggedInUser;
             _view.SaveClick += OnSaveClick;
+            _view.CloseClick += OnCloseClick;
         }
         private void OnSaveClick(object sender, EventArgs e)
         {
@@ -28,7 +29,7 @@ namespace YourProply.Presenters
             if (property != null && address != null)
             {
                 property.Address = address;
-                property.UserId = _loggedInUser.UserId; // Przypisanie UserId
+                property.UserId = _loggedInUser.UserId;
                 if (property.PropertyId == 0)
                 {
                     _context.Properties.Add(property);
@@ -38,13 +39,17 @@ namespace YourProply.Presenters
                     _context.Properties.Update(property);
                 }
                     _context.SaveChanges();
-                    _view.ShowMessage("Property saved successfully.");
+                    _view.ShowMessage("Nieruchomość zapisana pomyślnie");
                     _view.Close();
             }
             else
             {
-                _view.ShowMessage("Please fill in all required fields.");
+                _view.ShowMessage("Proszę uzupełnić wszystkie pola");
             }
+        }
+        private void OnCloseClick(object sender, EventArgs e)
+        {
+            _view.Close();
         }
     }
 }

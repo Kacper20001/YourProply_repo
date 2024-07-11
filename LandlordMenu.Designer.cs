@@ -35,7 +35,7 @@
             btnLogout = new Button();
             btnYourProperties = new Button();
             btnYourAccount = new Button();
-            btnAddTenant = new Button();
+            btnManageUsers = new Button();
             btnGenerateLeaseAgreement = new Button();
             btnSendEmail = new Button();
             btnChatAI = new Button();
@@ -120,15 +120,15 @@
             btnYourAccount.Text = "Panel użytkownika";
             btnYourAccount.UseVisualStyleBackColor = false;
             // 
-            // btnAddTenant
+            // btnManageUsers
             // 
-            btnAddTenant.BackColor = Color.CornflowerBlue;
-            btnAddTenant.Location = new Point(636, 136);
-            btnAddTenant.Name = "btnAddTenant";
-            btnAddTenant.Size = new Size(149, 118);
-            btnAddTenant.TabIndex = 10;
-            btnAddTenant.Text = "Dodaj Najemce";
-            btnAddTenant.UseVisualStyleBackColor = false;
+            btnManageUsers.BackColor = Color.CornflowerBlue;
+            btnManageUsers.Location = new Point(636, 136);
+            btnManageUsers.Name = "btnManageUsers";
+            btnManageUsers.Size = new Size(149, 118);
+            btnManageUsers.TabIndex = 10;
+            btnManageUsers.Text = "Twoi najemcy";
+            btnManageUsers.UseVisualStyleBackColor = false;
             // 
             // btnGenerateLeaseAgreement
             // 
@@ -170,7 +170,7 @@
             Controls.Add(btnChatAI);
             Controls.Add(btnSendEmail);
             Controls.Add(btnGenerateLeaseAgreement);
-            Controls.Add(btnAddTenant);
+            Controls.Add(btnManageUsers);
             Controls.Add(btnYourAccount);
             Controls.Add(btnYourProperties);
             Controls.Add(btnLogout);
@@ -198,7 +198,7 @@
         private Button btnLogout;
         private Button btnYourProperties;
         private Button btnYourAccount;
-        private Button btnAddTenant;
+        private Button btnManageUsers;
         private Button btnGenerateLeaseAgreement;
         private Button btnSendEmail;
         private Button btnChatAI;
