@@ -30,11 +30,22 @@ namespace YourProply.Presenters
                 return;
             }
 
-            var landlordMenu = new LandlordMenu(user);
-            var landlordMenuPresenter = new LandlordMenuPresenter(landlordMenu, _context, user);
-            _view.Hide();
-            landlordMenu.FormClosed += (s, args) => _view.Show();
-            landlordMenu.Show();
+            if (user.UserType == UserType.Landlord)
+            {
+                var landlordMenu = new LandlordMenu(user);
+                var landlordMenuPresenter = new LandlordMenuPresenter(landlordMenu, _context, user);
+                _view.Hide();
+                landlordMenu.FormClosed += (s, args) => _view.Show();
+                landlordMenu.Show();
+            }
+            else if (user.UserType == UserType.Tenant)
+            {
+                var tenantMenu = new TenantMenu(user);
+                var tenantMenuPresenter = new TenantMenuPresenter(tenantMenu, _context, user);
+                _view.Hide();
+                tenantMenu.FormClosed += (s, args) => _view.Show();
+                tenantMenu.Show();
+            }
         }
 
         private void OnRegisterClick(object sender, EventArgs e)

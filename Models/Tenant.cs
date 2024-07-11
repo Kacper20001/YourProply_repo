@@ -11,13 +11,16 @@ namespace YourProply.Entities
     {
         public Tenant() { }
 
-        public Tenant(int userId, string userName, string firstName, string lastName, string email, string password, int idNumber, Address address, Property property, DateTime dateOfBirth)
+        public Tenant(int userId, string userName, string firstName, string lastName, string email, string password, int idNumber, Address address, Property property, DateTime dateOfBirth, int landlordId)
             : base(userId, userName, firstName, lastName, email, password, idNumber, address, dateOfBirth)
         {
             Property = property;
             UserType = UserType.Tenant;
+            LandlordId = landlordId;
         }
 
         public Property Property { get; set; }
+        public int LandlordId { get; set; }
+        public Landlord Landlord { get; set; }
     }
 }

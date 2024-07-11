@@ -1,6 +1,6 @@
 ﻿namespace YourProply
 {
-    partial class LandlordMenu
+    partial class TenantMenu
     {
         /// <summary>
         ///  Required designer variable.
@@ -33,10 +33,8 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             ntnLogout = new Button();
-            btnYourProperties = new Button();
+            btnYourProperty = new Button();
             btnYourAccount = new Button();
-            btnAddTenant = new Button();
-            btnGenerateLeaseAgreement = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -96,17 +94,16 @@
             ntnLogout.TabIndex = 7;
             ntnLogout.Text = "Wyloguj";
             ntnLogout.UseVisualStyleBackColor = false;
-            ntnLogout.Click += ntnLogout_Click;
             // 
-            // btnYourProperties
+            // btnYourProperty
             // 
-            btnYourProperties.BackColor = Color.CornflowerBlue;
-            btnYourProperties.Location = new Point(411, 136);
-            btnYourProperties.Name = "btnYourProperties";
-            btnYourProperties.Size = new Size(149, 118);
-            btnYourProperties.TabIndex = 8;
-            btnYourProperties.Text = "Twoje nieruchomości";
-            btnYourProperties.UseVisualStyleBackColor = false;
+            btnYourProperty.BackColor = Color.CornflowerBlue;
+            btnYourProperty.Location = new Point(411, 136);
+            btnYourProperty.Name = "btnYourProperty";
+            btnYourProperty.Size = new Size(149, 118);
+            btnYourProperty.TabIndex = 8;
+            btnYourProperty.Text = "Twoje nieruchomości";
+            btnYourProperty.UseVisualStyleBackColor = false;
             // 
             // btnYourAccount
             // 
@@ -118,43 +115,20 @@
             btnYourAccount.Text = "Panel użytkownika";
             btnYourAccount.UseVisualStyleBackColor = false;
             // 
-            // btnAddTenant
-            // 
-            btnAddTenant.BackColor = Color.CornflowerBlue;
-            btnAddTenant.Location = new Point(636, 136);
-            btnAddTenant.Name = "btnAddTenant";
-            btnAddTenant.Size = new Size(149, 118);
-            btnAddTenant.TabIndex = 10;
-            btnAddTenant.Text = "Dodaj Najemce";
-            btnAddTenant.UseVisualStyleBackColor = false;
-            // 
-            // btnGenerateLeaseAgreement
-            // 
-            btnGenerateLeaseAgreement.BackColor = Color.CornflowerBlue;
-            btnGenerateLeaseAgreement.Location = new Point(411, 291);
-            btnGenerateLeaseAgreement.Name = "btnGenerateLeaseAgreement";
-            btnGenerateLeaseAgreement.Size = new Size(149, 118);
-            btnGenerateLeaseAgreement.TabIndex = 11;
-            btnGenerateLeaseAgreement.Text = "Generuj umowe";
-            btnGenerateLeaseAgreement.UseVisualStyleBackColor = false;
-            btnGenerateLeaseAgreement.Click += btnGenerateLeaseAgreement_Click;
-            // 
-            // LandlordMenu
+            // TenantMenu
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(1111, 636);
-            Controls.Add(btnGenerateLeaseAgreement);
-            Controls.Add(btnAddTenant);
             Controls.Add(btnYourAccount);
-            Controls.Add(btnYourProperties);
+            Controls.Add(btnYourProperty);
             Controls.Add(ntnLogout);
             Controls.Add(label1);
             Controls.Add(panel1);
             Font = new Font("Nirmala UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Margin = new Padding(4, 3, 4, 3);
-            Name = "LandlordMenu";
+            Name = "TenantMenu";
             Opacity = 0.9D;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
@@ -172,9 +146,7 @@
         private PictureBox pictureBox1;
         private Label label5;
         private Button ntnLogout;
-        private Button btnYourProperties;
+        private Button btnYourProperty;
         private Button btnYourAccount;
-        private Button btnAddTenant;
-        private Button btnGenerateLeaseAgreement;
     }
 }

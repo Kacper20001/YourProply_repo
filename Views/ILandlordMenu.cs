@@ -9,10 +9,10 @@ namespace YourProply.Views
 {
     public interface ILandlordMenu
     {
-
         event EventHandler YourPropertiesClick;
         event EventHandler YourAccountClick;
         event EventHandler AddTenantClick;
+        event EventHandler GenerateLeaseAgreementClick;
 
         User LoggedInUser { get; }
         void Hide();

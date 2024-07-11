@@ -22,13 +22,15 @@ namespace YourProply
             _loggedInUser = user;
             btnYourProperties.Click += (s, e) => YourPropertiesClick?.Invoke(this, EventArgs.Empty);
             btnYourAccount.Click += (s, e) => YourAccountClick?.Invoke(this, EventArgs.Empty);
-            btnAddTenant.Click += (s, e) => AddTenantClick?.Invoke(this, EventArgs.Empty); 
-
+            btnAddTenant.Click += (s, e) => AddTenantClick?.Invoke(this, EventArgs.Empty);
+            btnGenerateLeaseAgreement.Click += (s, e) => GenerateLeaseAgreementClick?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler YourPropertiesClick;
         public event EventHandler YourAccountClick;
-        public event EventHandler AddTenantClick; 
+        public event EventHandler AddTenantClick;
+        public event EventHandler GenerateLeaseAgreementClick;
+
 
         public User LoggedInUser => _loggedInUser;
 
@@ -40,6 +42,16 @@ namespace YourProply
         public new void Show()
         {
             base.Show();
+        }
+
+        private void ntnLogout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGenerateLeaseAgreement_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

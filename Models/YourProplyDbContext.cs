@@ -52,6 +52,11 @@ namespace YourProply.Entities
                 .HasForeignKey(u => u.AddressId)
 
                 .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Tenant>()
+                .HasOne(t => t.Landlord)
+                .WithMany(l => l.Tenants)
+                .HasForeignKey(t => t.LandlordId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);
         }

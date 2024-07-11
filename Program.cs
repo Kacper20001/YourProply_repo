@@ -1,3 +1,4 @@
+using QuestPDF.Infrastructure;
 using System;
 using System.Windows.Forms;
 using YourProply.Entities;
@@ -10,6 +11,7 @@ namespace YourProply
         [STAThread]
         static void Main()
         {
+            QuestPDF.Settings.License = LicenseType.Community;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

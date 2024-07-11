@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using YourProply.Entities;
+using YourProply.PDF;
 using YourProply.Views;
 
 namespace YourProply.Presenters
@@ -22,8 +23,10 @@ namespace YourProply.Presenters
             _loggedInUser = loggedInUser ?? throw new ArgumentNullException(nameof(loggedInUser));
             _view.YourPropertiesClick += ShowPropertiesView;
             _view.YourAccountClick += ShowAccountView;
-            _view.AddTenantClick += ShowAddTenantView; 
+            _view.AddTenantClick += ShowAddTenantView;
+            _view.GenerateLeaseAgreementClick += btnGenerateLeaseAgreement_Click;
         }
+
         private void ShowPropertiesView(object sender, EventArgs e)
         {
             var propertiesView = new PropertiesView(_loggedInUser);
@@ -41,7 +44,8 @@ namespace YourProply.Presenters
             _view.Hide();
             accountView.Show();
         }
-        private void ShowAddTenantView(object sender, EventArgs e) 
+
+        private void ShowAddTenantView(object sender, EventArgs e)
         {
             var availableProperties = _context.Properties
                 .Include(p => p.Address)
@@ -50,6 +54,13 @@ namespace YourProply.Presenters
             var addTenantPresenter = new AddTenantPresenter(addTenantView, _context, _loggedInUser);
             addTenantView.FormClosed += (s, args) => _view.Show();
             addTenantView.Show();
+        }
+        private void btnGenerateLeaseAgreement_Click(object sender, EventArgs e)
+        {
+            var generateLeaseAgreementView = new GenerateLeaseAgreementForm();
+            generateLeaseAgreementView.FormClosed += (s, args) => _view.Show();
+            _view.Hide();
+            generateLeaseAgreementView.Show();
         }
     }
 }
