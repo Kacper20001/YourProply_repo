@@ -9,12 +9,14 @@ namespace YourProply
     public partial class SendEmailView : Form, ISendEmailView
     {
         public event EventHandler SendEmailClick;
+        public event EventHandler BackToMenuClick;
 
         public SendEmailView(List<Tenant> tenants)
         {
             InitializeComponent();
             SetTenants(tenants);
             btnSendEmail.Click += (s, e) => SendEmailClick?.Invoke(this, EventArgs.Empty);
+            btnBack.Click += (s, e) => BackToMenuClick?.Invoke(this, EventArgs.Empty);
         }
 
         public Tenant SelectedTenant => (Tenant)cmbTenants.SelectedItem;

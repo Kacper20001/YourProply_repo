@@ -21,12 +21,10 @@ namespace YourProply
             btnAddProperty.Click += (s, e) => AddPropertyClick?.Invoke(this, EventArgs.Empty);
             btnEditProperty.Click += (s, e) => EditPropertyClick?.Invoke(this, EventArgs.Empty);
             btnDeleteProperty.Click += (s, e) => DeletePropertyClick?.Invoke(this, EventArgs.Empty);
-            btnBack.Click += (s, e) => BackToMenuClick?.Invoke(this, EventArgs.Empty); 
+            btnBack.Click += (s, e) => BackToMenuClick?.Invoke(this, EventArgs.Empty);
 
-            txtFilter.TextChanged += (s, e) =>
-            {
-                FilterProperties?.Invoke(this, txtFilter.Text);
-            };
+            txtFilter.TextChanged += (s, e) => FilterProperties?.Invoke(this, txtFilter.Text);
+            
         }
 
         public event EventHandler AddPropertyClick;

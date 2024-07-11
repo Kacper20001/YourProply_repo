@@ -7,6 +7,7 @@ namespace YourProply.Views
     public interface ISendEmailView
     {
         event EventHandler SendEmailClick;
+        event EventHandler BackToMenuClick;
         Tenant SelectedTenant { get; }
         string Subject { get; }
         string Body { get; }

@@ -65,6 +65,7 @@
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
+            btnBack = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -166,8 +167,7 @@
             btnSave.TabIndex = 7;
             btnSave.Text = "Generuj";
             btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click;
-            // 
+           // 
             // txtIdNumber
             // 
             txtIdNumber.BackColor = Color.FromArgb(15, 15, 15);
@@ -460,12 +460,23 @@
             label16.TabIndex = 37;
             label16.Text = "Nieruchomość:";
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.CornflowerBlue;
+            btnBack.Location = new Point(1308, 13);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(102, 37);
+            btnBack.TabIndex = 38;
+            btnBack.Text = "Wróć";
+            btnBack.UseVisualStyleBackColor = false;
+            // 
             // GenerateLeaseAgreementForm
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(1422, 630);
+            Controls.Add(btnBack);
             Controls.Add(label16);
             Controls.Add(txtEndDate);
             Controls.Add(label9);
@@ -553,5 +564,6 @@
         private Label label14;
         private Label label15;
         private Label label16;
+        private Button btnBack;
     }
 }

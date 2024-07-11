@@ -10,8 +10,11 @@ namespace YourProply.PDF
         public GenerateLeaseAgreementForm()
         {
             InitializeComponent();
-            _presenter = new GenerateLeaseAgreementPresenter(this);
+            btnBack.Click += (s, e) => BackToMenuClick?.Invoke(this, EventArgs.Empty);
+            btnSave.Click += (s, e) => GeneratePDF?.Invoke(this, EventArgs.Empty);
         }
+        public event EventHandler BackToMenuClick;
+        public event EventHandler GeneratePDF;
 
         public string LandlordFirstName => txtLandlordFirstName.Text;
         public string LandlordLastName => txtLandlordLastName.Text;
@@ -35,10 +38,14 @@ namespace YourProply.PDF
         {
             MessageBox.Show(message);
         }
-
-        private void btnSave_Click(object sender, EventArgs e)
+        public new void Show()
         {
-            _presenter.GeneratePdf();
+            base.Show();
+        }
+
+        public new void Hide()
+        {
+            base.Hide();
         }
     }
 }

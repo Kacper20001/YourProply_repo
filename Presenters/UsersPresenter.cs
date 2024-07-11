@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using YourProply.Entities;
 using Microsoft.EntityFrameworkCore;
 using YourProply.Views;
+using YourProply.Services;
 
 namespace YourProply.Presenters
 {
@@ -15,10 +16,13 @@ namespace YourProply.Presenters
         private readonly YourProplyDbContext _context;
         private readonly User _loggedInUser;
         private List<Tenant> _allUsers;
+        private readonly OpenAIService _openAIService;
 
-        public UsersPresenter(IUsersView view, YourProplyDbContext context, User loggedInUser)
+
+        public UsersPresenter(IUsersView view, YourProplyDbContext context, User loggedInUser, OpenAIService openAIService)
         {
             _view = view;
+            _openAIService = openAIService;
             _context = context;
             _loggedInUser = loggedInUser;
             _view.AddUserClick += OnAddUserClick;
@@ -98,7 +102,7 @@ namespace YourProply.Presenters
         private void OnBackToMenuClick(object sender, EventArgs e)
         {
             var landlordMenu = new LandlordMenu(_loggedInUser);
-            var landlordMenuPresenter = new LandlordMenuPresenter(landlordMenu, _context, _loggedInUser, null);
+            var landlordMenuPresenter = new LandlordMenuPresenter(landlordMenu, _context, _loggedInUser, _openAIService);
             _view.Hide();
             landlordMenu.FormClosed += (s, args) => _view.Show();
             landlordMenu.Show();

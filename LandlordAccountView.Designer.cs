@@ -57,7 +57,7 @@
             label16 = new Label();
             label17 = new Label();
             btnChangeAddress = new Button();
-            button2 = new Button();
+            btnBack = new Button();
             txtBirthday = new TextBox();
             txtState = new TextBox();
             panel1.SuspendLayout();
@@ -172,7 +172,7 @@
             btnChangePassword.BackColor = Color.CornflowerBlue;
             btnChangePassword.Location = new Point(595, 519);
             btnChangePassword.Name = "btnChangePassword";
-            btnChangePassword.Size = new Size(116, 31);
+            btnChangePassword.Size = new Size(119, 55);
             btnChangePassword.TabIndex = 7;
             btnChangePassword.Text = "Zmień hasło";
             btnChangePassword.UseVisualStyleBackColor = false;
@@ -378,20 +378,20 @@
             btnChangeAddress.BackColor = Color.CornflowerBlue;
             btnChangeAddress.Location = new Point(720, 519);
             btnChangeAddress.Name = "btnChangeAddress";
-            btnChangeAddress.Size = new Size(118, 31);
+            btnChangeAddress.Size = new Size(118, 55);
             btnChangeAddress.TabIndex = 33;
             btnChangeAddress.Text = "Zmień adres";
             btnChangeAddress.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnBack
             // 
-            button2.BackColor = Color.CornflowerBlue;
-            button2.Location = new Point(836, 12);
-            button2.Name = "button2";
-            button2.Size = new Size(118, 31);
-            button2.TabIndex = 34;
-            button2.Text = "Wróć";
-            button2.UseVisualStyleBackColor = false;
+            btnBack.BackColor = Color.CornflowerBlue;
+            btnBack.Location = new Point(836, 12);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(118, 41);
+            btnBack.TabIndex = 34;
+            btnBack.Text = "Wróć";
+            btnBack.UseVisualStyleBackColor = false;
             // 
             // txtBirthday
             // 
@@ -425,7 +425,7 @@
             ClientSize = new Size(966, 586);
             Controls.Add(txtState);
             Controls.Add(txtBirthday);
-            Controls.Add(button2);
+            Controls.Add(btnBack);
             Controls.Add(btnChangeAddress);
             Controls.Add(label17);
             Controls.Add(LoginBtn);
@@ -497,7 +497,7 @@
         private Label label16;
         private Label label17;
         private Button btnChangeAddress;
-        private Button button2;
+        private Button btnBack;
         private TextBox txtBirthday;
         private TextBox txtState;
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using YourProply.Entities;
@@ -13,14 +14,20 @@ namespace YourProply.Presenters
         private readonly ISendEmailView _view;
         private readonly EmailService _emailService;
         private readonly User _loggedInUser;
+        private readonly YourProplyDbContext _context;
+        private readonly OpenAIService _openAIService;
 
-        public SendEmailPresenter(ISendEmailView view, EmailService emailService, User loggedInUser, List<Tenant> tenants)
+
+        public SendEmailPresenter(ISendEmailView view, EmailService emailService, User loggedInUser, List<Tenant> tenants, YourProplyDbContext context, OpenAIService openAIService)
         {
             _view = view;
+            _openAIService = openAIService;
+            _context = context;
             _emailService = emailService;
             _loggedInUser = loggedInUser;
             _view.SetTenants(tenants);
             _view.SendEmailClick += OnSendEmailClick;
+            _view.BackToMenuClick += OnBackToMenuClick;
         }
 
         private async void OnSendEmailClick(object sender, EventArgs e)
@@ -49,6 +56,15 @@ namespace YourProply.Presenters
                 _view.ShowMessage($"Error sending email: {ex.Message}");
                 _view.ClearForm();
             }
+
+        }
+        private void OnBackToMenuClick(object sender, EventArgs e)
+        {
+            var landlordMenu = new LandlordMenu(_loggedInUser);
+            var landlordMenuPresenter = new LandlordMenuPresenter(landlordMenu, _context, _loggedInUser, _openAIService);
+            _view.Hide();
+            landlordMenu.FormClosed += (s, args) => _view.Show();
+            landlordMenu.Show();
         }
     }
 }

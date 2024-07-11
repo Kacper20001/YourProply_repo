@@ -8,6 +8,8 @@ namespace YourProply.PDF
 {
     public interface IGenerateLeaseAgreementView
     {
+        event EventHandler BackToMenuClick;
+        event EventHandler GeneratePDF;
         string LandlordFirstName { get; }
         string LandlordLastName { get; }
         string LandlordDOB { get; }
@@ -27,5 +29,7 @@ namespace YourProply.PDF
         string RentalEndDate { get; }
 
         void ShowMessage(string message);
+        void Show();
+        void Hide();
     }
 }

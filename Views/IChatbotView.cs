@@ -9,6 +9,8 @@ namespace YourProply.Views
     public interface IChatbotView
     {
         event EventHandler AskQuestionClick;
+        event EventHandler BackToMenuClick;
+
         string Question { get; }
         void SetAnswer(string answer);
         void Show();

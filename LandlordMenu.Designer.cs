@@ -52,7 +52,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(312, 636);
+            panel1.Size = new Size(312, 484);
             panel1.TabIndex = 0;
             // 
             // label5
@@ -60,7 +60,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Nirmala UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(103, 99);
+            label5.Location = new Point(109, 53);
             label5.Name = "label5";
             label5.Size = new Size(101, 38);
             label5.TabIndex = 2;
@@ -69,7 +69,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.icon;
-            pictureBox1.Location = new Point(12, 236);
+            pictureBox1.Location = new Point(12, 159);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(286, 250);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -166,7 +166,7 @@
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
-            ClientSize = new Size(1111, 636);
+            ClientSize = new Size(1121, 484);
             Controls.Add(btnChatAI);
             Controls.Add(btnSendEmail);
             Controls.Add(btnGenerateLeaseAgreement);

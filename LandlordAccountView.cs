@@ -25,10 +25,13 @@ namespace YourProply
             _context = context;
             btnChangeAddress.Click += (s, e) => ChangeAddressClick?.Invoke(this, EventArgs.Empty);
             btnChangePassword.Click += (s, e) => ChangePasswordClick?.Invoke(this, EventArgs.Empty);
+            btnBack.Click += (s, e) => BackToMenuClick?.Invoke(this, EventArgs.Empty);
             LoadUserData();
         }
         public event EventHandler ChangePasswordClick; 
         public event EventHandler ChangeAddressClick;
+        public event EventHandler BackToMenuClick;
+
 
         public void ShowMessage(string message)
         {

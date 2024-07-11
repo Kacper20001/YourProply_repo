@@ -39,30 +39,30 @@ namespace YourProply.Presenters
             propertiesView.FormClosed += (s, args) => _view.Show();
             propertiesView.Show();
         }
+        private void ShowUsersView(object sender, EventArgs e)
+        {
+            var usersView = new UsersView(_loggedInUser);
+            var usersPresenter = new UsersPresenter(usersView, _context, _loggedInUser, _openAIService);
+            _view.Hide();
+            usersView.FormClosed += (s, args) => _view.Show();
+            usersView.Show();
+        }
 
         private void ShowAccountView(object sender, EventArgs e)
         {
             var accountView = new LandlordAccountView(_loggedInUser, _context);
-            var accountPresenter = new LandlordAccountPresenter(accountView, _context, _loggedInUser);
+            var accountPresenter = new LandlordAccountPresenter(accountView, _context, _loggedInUser, _openAIService);
             accountView.FormClosed += (s, args) => _view.Show();
             _view.Hide();
             accountView.Show();
         }
 
-        private void ShowAddTenantView(object sender, EventArgs e)
-        {
-            var availableProperties = _context.Properties
-                .Include(p => p.Address)
-                .Where(p => p.UserId == _loggedInUser.UserId).ToList();
-            var addTenantView = new AddTenantView(availableProperties);
-            var addTenantPresenter = new AddTenantPresenter(addTenantView, _context, _loggedInUser);
-            addTenantView.FormClosed += (s, args) => _view.Show();
-            addTenantView.Show();
-        }
+        
 
         private void btnGenerateLeaseAgreement_Click(object sender, EventArgs e)
         {
             var generateLeaseAgreementView = new GenerateLeaseAgreementForm();
+            var generateLeaseAgreementPresenter = new GenerateLeaseAgreementPresenter(generateLeaseAgreementView, _context, _loggedInUser, _openAIService);
             generateLeaseAgreementView.FormClosed += (s, args) => _view.Show();
             _view.Hide();
             generateLeaseAgreementView.Show();
@@ -74,7 +74,7 @@ namespace YourProply.Presenters
             var emailService = new EmailService("smtp-mail.outlook.com", 587, _loggedInUser.Email, _loggedInUser.Password);
             Console.WriteLine($"Email: {_loggedInUser.Email}, Password: {_loggedInUser.Password}");
             var sendEmailView = new SendEmailView(tenants);
-            var sendEmailPresenter = new SendEmailPresenter(sendEmailView, emailService, _loggedInUser, tenants);
+            var sendEmailPresenter = new SendEmailPresenter(sendEmailView, emailService, _loggedInUser, tenants, _context, _openAIService);
             sendEmailView.FormClosed += (s, args) => _view.Show();
             _view.Hide();
             sendEmailView.Show();
@@ -82,7 +82,7 @@ namespace YourProply.Presenters
         private void ShowChatbotView(object sender, EventArgs e)
         {
             var chatbotView = new ChatbotView();
-            var chatbotPresenter = new ChatbotPresenter(chatbotView, _openAIService);
+            var chatbotPresenter = new ChatbotPresenter(chatbotView, _openAIService, _context, _loggedInUser);
             chatbotView.FormClosed += (s, args) => _view.Show();
             _view.Hide();
             chatbotView.Show();
@@ -95,14 +95,7 @@ namespace YourProply.Presenters
             loginView.FormClosed += (s, args) => _view.Show();
             loginView.Show();
         }
-        private void ShowUsersView(object sender, EventArgs e)
-        {
-            var usersView = new UsersView(_loggedInUser);
-            var usersPresenter = new UsersPresenter(usersView, _context, _loggedInUser);
-            _view.Hide();
-            usersView.FormClosed += (s, args) => _view.Show();
-            usersView.Show();
-        }
+        
 
     }
 }

@@ -17,9 +17,13 @@ namespace YourProply
         {
             InitializeComponent();
             btnAsk.Click += (s, e) => AskQuestionClick?.Invoke(this, EventArgs.Empty);
+            btnBack.Click += (s, e) => BackToMenuClick?.Invoke(this, EventArgs.Empty);
+
         }
 
         public event EventHandler AskQuestionClick;
+        public event EventHandler BackToMenuClick;
+
 
         public string Question => txtQuestion.Text;
 

@@ -10,6 +10,7 @@ namespace YourProply.Views
     {
         event EventHandler ChangePasswordClick;
         event EventHandler ChangeAddressClick;
+        event EventHandler BackToMenuClick;
         void ShowMessage(string message);
         void Show();
         void Close();

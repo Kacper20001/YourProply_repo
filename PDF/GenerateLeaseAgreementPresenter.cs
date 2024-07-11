@@ -3,20 +3,40 @@ using QuestPDF.Infrastructure;
 using QuestPDF.Helpers;
 using System;
 using System.IO;
+using YourProply.Services;
+using YourProply.Entities;
+using YourProply.Presenters;
 
 namespace YourProply.PDF
 {
     public class GenerateLeaseAgreementPresenter
     {
+        private readonly YourProplyDbContext _context;
+        private readonly User _loggedInUser;
         private readonly IGenerateLeaseAgreementView _view;
+        private readonly OpenAIService _openAIService;
 
-        public GenerateLeaseAgreementPresenter(IGenerateLeaseAgreementView view)
+        public GenerateLeaseAgreementPresenter(IGenerateLeaseAgreementView view, YourProplyDbContext context, User loggedInUser, OpenAIService openAIService)
         {
             _view = view;
+            _openAIService = openAIService;
+            _context = context;
+            _loggedInUser = loggedInUser;
+            _view.BackToMenuClick += OnBackToMenuClick;
+            _view.GeneratePDF += GeneratePdf;
+
+
             QuestPDF.Settings.License = LicenseType.Community;
         }
-
-        public void GeneratePdf()
+        private void OnBackToMenuClick(object sender, EventArgs e)
+        {
+            var landlordMenu = new LandlordMenu(_loggedInUser);
+            var landlordMenuPresenter = new LandlordMenuPresenter(landlordMenu, _context, _loggedInUser, _openAIService);
+            _view.Hide();
+            landlordMenu.FormClosed += (s, args) => _view.Show();
+            landlordMenu.Show();
+        }
+        public void GeneratePdf(object sender, EventArgs e)
         {
             var model = new RentalAgreementModel
             {
