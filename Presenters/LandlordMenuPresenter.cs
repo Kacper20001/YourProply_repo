@@ -1,11 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourProply.Entities;
 using YourProply.PDF;
+using YourProply.Services;
 using YourProply.Views;
 
 namespace YourProply.Presenters
@@ -25,6 +23,7 @@ namespace YourProply.Presenters
             _view.YourAccountClick += ShowAccountView;
             _view.AddTenantClick += ShowAddTenantView;
             _view.GenerateLeaseAgreementClick += btnGenerateLeaseAgreement_Click;
+            _view.SendEmailClick += ShowSendEmailView;
         }
 
         private void ShowPropertiesView(object sender, EventArgs e)
@@ -55,12 +54,25 @@ namespace YourProply.Presenters
             addTenantView.FormClosed += (s, args) => _view.Show();
             addTenantView.Show();
         }
+
         private void btnGenerateLeaseAgreement_Click(object sender, EventArgs e)
         {
             var generateLeaseAgreementView = new GenerateLeaseAgreementForm();
             generateLeaseAgreementView.FormClosed += (s, args) => _view.Show();
             _view.Hide();
             generateLeaseAgreementView.Show();
+        }
+
+        private void ShowSendEmailView(object sender, EventArgs e)
+        {
+            var tenants = _context.Users.OfType<Tenant>().Where(t => t.LandlordId == _loggedInUser.UserId).ToList();
+            var emailService = new EmailService("smtp-mail.outlook.com", 587, _loggedInUser.Email, _loggedInUser.Password);
+            Console.WriteLine($"Email: {_loggedInUser.Email}, Password: {_loggedInUser.Password}");
+            var sendEmailView = new SendEmailView(tenants);
+            var sendEmailPresenter = new SendEmailPresenter(sendEmailView, emailService, _loggedInUser, tenants);
+            sendEmailView.FormClosed += (s, args) => _view.Show();
+            _view.Hide();
+            sendEmailView.Show();
         }
     }
 }

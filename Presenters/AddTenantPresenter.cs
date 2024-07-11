@@ -60,7 +60,9 @@ namespace YourProply.Presenters
                 Address = address,
                 UserType = UserType.Tenant,
                 DateOfBirth = _view.DateOfBirth,
-                Property = selectedProperty
+                Property = selectedProperty,
+                LandlordId = _loggedInUser.UserId
+
             };
 
             _context.Users.Add(tenant);

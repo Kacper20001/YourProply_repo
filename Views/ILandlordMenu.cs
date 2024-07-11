@@ -13,6 +13,7 @@ namespace YourProply.Views
         event EventHandler YourAccountClick;
         event EventHandler AddTenantClick;
         event EventHandler GenerateLeaseAgreementClick;
+        event EventHandler SendEmailClick;
 
         User LoggedInUser { get; }
         void Hide();

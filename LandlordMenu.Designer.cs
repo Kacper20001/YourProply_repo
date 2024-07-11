@@ -37,6 +37,7 @@
             btnYourAccount = new Button();
             btnAddTenant = new Button();
             btnGenerateLeaseAgreement = new Button();
+            btnSendEmail = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -139,12 +140,23 @@
             btnGenerateLeaseAgreement.UseVisualStyleBackColor = false;
             btnGenerateLeaseAgreement.Click += btnGenerateLeaseAgreement_Click;
             // 
+            // btnSendEmail
+            // 
+            btnSendEmail.BackColor = Color.CornflowerBlue;
+            btnSendEmail.Location = new Point(636, 291);
+            btnSendEmail.Name = "btnSendEmail";
+            btnSendEmail.Size = new Size(149, 118);
+            btnSendEmail.TabIndex = 12;
+            btnSendEmail.Text = "Wyślij email";
+            btnSendEmail.UseVisualStyleBackColor = false;
+            // 
             // LandlordMenu
             // 
             AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(1111, 636);
+            Controls.Add(btnSendEmail);
             Controls.Add(btnGenerateLeaseAgreement);
             Controls.Add(btnAddTenant);
             Controls.Add(btnYourAccount);
@@ -176,5 +188,6 @@
         private Button btnYourAccount;
         private Button btnAddTenant;
         private Button btnGenerateLeaseAgreement;
+        private Button btnSendEmail;
     }
 }

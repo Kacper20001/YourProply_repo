@@ -24,12 +24,14 @@ namespace YourProply
             btnYourAccount.Click += (s, e) => YourAccountClick?.Invoke(this, EventArgs.Empty);
             btnAddTenant.Click += (s, e) => AddTenantClick?.Invoke(this, EventArgs.Empty);
             btnGenerateLeaseAgreement.Click += (s, e) => GenerateLeaseAgreementClick?.Invoke(this, EventArgs.Empty);
+            btnSendEmail.Click += (s, e) => SendEmailClick?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler YourPropertiesClick;
         public event EventHandler YourAccountClick;
         public event EventHandler AddTenantClick;
         public event EventHandler GenerateLeaseAgreementClick;
+        public event EventHandler SendEmailClick;
 
 
         public User LoggedInUser => _loggedInUser;
