@@ -259,6 +259,7 @@ namespace YourProply
             txtConfirmPassword.ForeColor = Color.White;
             txtConfirmPassword.Location = new Point(631, 327);
             txtConfirmPassword.Name = "txtConfirmPassword";
+            txtConfirmPassword.PasswordChar = '*';
             txtConfirmPassword.Size = new Size(242, 30);
             txtConfirmPassword.TabIndex = 15;
             // 
@@ -270,6 +271,7 @@ namespace YourProply
             txtPassword.ForeColor = Color.White;
             txtPassword.Location = new Point(631, 291);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(242, 30);
             txtPassword.TabIndex = 14;
             // 

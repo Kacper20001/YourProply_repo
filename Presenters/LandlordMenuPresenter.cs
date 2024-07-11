@@ -27,12 +27,13 @@ namespace YourProply.Presenters
             _view.GenerateLeaseAgreementClick += btnGenerateLeaseAgreement_Click;
             _view.SendEmailClick += ShowSendEmailView;
             _view.OpenChatbotClick += ShowChatbotView;
+            _view.LogoutClick += Logout;
         }
 
         private void ShowPropertiesView(object sender, EventArgs e)
         {
             var propertiesView = new PropertiesView(_loggedInUser);
-            var propertiesPresenter = new PropertiesPresenter(propertiesView, _context, _loggedInUser);
+            var propertiesPresenter = new PropertiesPresenter(propertiesView, _context, _loggedInUser, _openAIService);
             _view.Hide();
             propertiesView.FormClosed += (s, args) => _view.Show();
             propertiesView.Show();
@@ -84,6 +85,14 @@ namespace YourProply.Presenters
             chatbotView.FormClosed += (s, args) => _view.Show();
             _view.Hide();
             chatbotView.Show();
+        }
+        private void Logout(object sender, EventArgs e)
+        {
+            var loginView = new Login();
+            var loginPresenter = new LoginPresenter(loginView, _context, _openAIService);
+            _view.Hide();
+            loginView.FormClosed += (s, args) => _view.Show();
+            loginView.Show();
         }
     }
 }

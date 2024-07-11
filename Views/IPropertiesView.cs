@@ -12,6 +12,10 @@ namespace YourProply.Views
         event EventHandler AddPropertyClick;
         event EventHandler EditPropertyClick;
         event EventHandler DeletePropertyClick;
+        event EventHandler<string> FilterProperties;
+        event EventHandler BackToMenuClick; 
+
+
 
         void SetProperties(List<Property> properties);
         Property GetSelectedProperty();

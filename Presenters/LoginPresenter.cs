@@ -21,6 +21,8 @@ namespace YourProply.Presenters
             _view.LoginEvent += OnLogin;
             _openAIService = openAIService;
             _view.RegisterClick += OnRegisterClick;
+            _view.CloseAppClick += OnCloseAppClick; 
+
         }
 
         private void OnLogin(object sender, EventArgs e)
@@ -33,13 +35,15 @@ namespace YourProply.Presenters
                 _view.ShowMessage("Invalid username or password.");
                 return;
             }
+            _view.Hide();
+
 
             if (user.UserType == UserType.Landlord)
             {
                 var landlordMenu = new LandlordMenu(user);
                 var landlordMenuPresenter = new LandlordMenuPresenter(landlordMenu, _context, user, _openAIService);
                 _view.Hide();
-                landlordMenu.FormClosed += (s, args) => _view.Show();
+                landlordMenu.FormClosed += (s, args) => _view.Close(); 
                 landlordMenu.Show();
             }
             else if (user.UserType == UserType.Tenant)
@@ -47,7 +51,7 @@ namespace YourProply.Presenters
                 var tenantMenu = new TenantMenu(user);
                 var tenantMenuPresenter = new TenantMenuPresenter(tenantMenu, _context, user);
                 _view.Hide();
-                tenantMenu.FormClosed += (s, args) => _view.Show();
+                tenantMenu.FormClosed += (s, args) => _view.Close(); 
                 tenantMenu.Show();
             }
         }
@@ -59,6 +63,11 @@ namespace YourProply.Presenters
             _view.Hide();
             registerView.FormClosed += (s, args) => _view.Show();
             registerView.ShowDialog();
+            _view.Close();
+        }
+        private void OnCloseAppClick(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

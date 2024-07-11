@@ -13,6 +13,7 @@ namespace YourProply.Views
 
         event EventHandler LoginEvent;
         event EventHandler RegisterClick;
+        event EventHandler CloseAppClick;
 
         void ShowMessage(string message);
         void Show();

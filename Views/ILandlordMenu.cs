@@ -15,6 +15,7 @@ namespace YourProply.Views
         event EventHandler GenerateLeaseAgreementClick;
         event EventHandler SendEmailClick;
         event EventHandler OpenChatbotClick;
+        event EventHandler LogoutClick;
 
         User LoggedInUser { get; }
         void Hide();

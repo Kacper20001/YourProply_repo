@@ -32,7 +32,7 @@
             label5 = new Label();
             pictureBox1 = new PictureBox();
             label1 = new Label();
-            ntnLogout = new Button();
+            btnLogout = new Button();
             btnYourProperties = new Button();
             btnYourAccount = new Button();
             btnAddTenant = new Button();
@@ -89,16 +89,16 @@
             label1.Text = "Wybierz";
             label1.TextAlign = ContentAlignment.TopCenter;
             // 
-            // ntnLogout
+            // btnLogout
             // 
-            ntnLogout.BackColor = Color.CornflowerBlue;
-            ntnLogout.Location = new Point(957, 26);
-            ntnLogout.Name = "ntnLogout";
-            ntnLogout.Size = new Size(142, 36);
-            ntnLogout.TabIndex = 7;
-            ntnLogout.Text = "Wyloguj";
-            ntnLogout.UseVisualStyleBackColor = false;
-            ntnLogout.Click += ntnLogout_Click;
+            btnLogout.BackColor = Color.CornflowerBlue;
+            btnLogout.Location = new Point(957, 26);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(142, 36);
+            btnLogout.TabIndex = 7;
+            btnLogout.Text = "Wyloguj";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += ntnLogout_Click;
             // 
             // btnYourProperties
             // 
@@ -173,7 +173,7 @@
             Controls.Add(btnAddTenant);
             Controls.Add(btnYourAccount);
             Controls.Add(btnYourProperties);
-            Controls.Add(ntnLogout);
+            Controls.Add(btnLogout);
             Controls.Add(label1);
             Controls.Add(panel1);
             Font = new Font("Nirmala UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -195,7 +195,7 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Label label5;
-        private Button ntnLogout;
+        private Button btnLogout;
         private Button btnYourProperties;
         private Button btnYourAccount;
         private Button btnAddTenant;

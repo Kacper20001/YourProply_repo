@@ -25,7 +25,7 @@ namespace YourProply.Presenters
         {
             if (_view.Password != _view.ConfirmPassword)
             {
-                _view.ShowMessage("Passwords do not match.");
+                _view.ShowMessage("Hasła nie są identyczne");
                 return;
             }
 
@@ -34,7 +34,7 @@ namespace YourProply.Presenters
 
             if (existingUser != null)
             {
-                _view.ShowMessage("User with this username or email already exists.");
+                _view.ShowMessage("Użytkownik o podanej nazwie lub adresie email już istnieje.");
                 return;
             }
 
@@ -66,10 +66,14 @@ namespace YourProply.Presenters
             _context.Users.Add(landlord);
             _context.SaveChanges();
 
-            _view.ShowMessage("Registration successful!");
+            _view.ShowMessage("Zarejestrowano!");
             _view.ClearForm();
-
-            OnAlreadyHaveAccountClick(sender, e);
+            _view.Hide();
+            var loginView = new Login();
+            var loginPresenter = new LoginPresenter(loginView, _context, _openAIService);
+            //loginView.FormClosed += (s, args) => _view.Show();
+            loginView.ShowDialog();
+            _view.Close();
         }
 
         private void OnAlreadyHaveAccountClick(object sender, EventArgs e)
@@ -79,6 +83,7 @@ namespace YourProply.Presenters
             _view.Hide();
             loginView.FormClosed += (s, args) => _view.Show();
             loginView.ShowDialog();
+
         }
     }
 }

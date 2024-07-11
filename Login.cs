@@ -9,12 +9,16 @@ namespace YourProply
             InitializeComponent();
             btnLogin.Click += (s, e) => LoginEvent?.Invoke(this, EventArgs.Empty);
             registerBtn.Click += (s, e) => RegisterClick?.Invoke(this, EventArgs.Empty);
+            btnCloseApp.Click += (s, e) => CloseAppClick?.Invoke(this, EventArgs.Empty); 
+
         }
         public string UserName => LoginTxt.Text;
         public string Password => PasswordTxt.Text;
 
         public event EventHandler LoginEvent;
         public event EventHandler RegisterClick;
+        public event EventHandler CloseAppClick; 
+
         public new void Show()
         {
             base.Show();
@@ -32,16 +36,6 @@ namespace YourProply
         public void ShowMessage(string message)
         {
             MessageBox.Show(message);
-        }
-
-        private void registerBtn_Click(object sender, EventArgs e)
-        {
-            RegisterClick?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -37,6 +37,8 @@
             label1 = new Label();
             dataGridProperties = new DataGridView();
             btnBack = new Button();
+            txtFilter = new TextBox();
+            label3 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridProperties).BeginInit();
@@ -113,7 +115,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Broadway", 16.2F, FontStyle.Bold);
             label1.ForeColor = Color.CornflowerBlue;
-            label1.Location = new Point(530, 24);
+            label1.Location = new Point(570, 20);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(355, 32);
@@ -125,21 +127,42 @@
             // 
             dataGridProperties.BackgroundColor = Color.Black;
             dataGridProperties.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridProperties.Location = new Point(363, 96);
+            dataGridProperties.Location = new Point(385, 170);
             dataGridProperties.Name = "dataGridProperties";
             dataGridProperties.RowHeadersWidth = 51;
-            dataGridProperties.Size = new Size(845, 462);
+            dataGridProperties.Size = new Size(773, 379);
             dataGridProperties.TabIndex = 8;
             // 
             // btnBack
             // 
             btnBack.BackColor = Color.CornflowerBlue;
-            btnBack.Location = new Point(986, 19);
+            btnBack.Location = new Point(1121, 12);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(102, 38);
             btnBack.TabIndex = 13;
             btnBack.Text = "Powrót";
             btnBack.UseVisualStyleBackColor = false;
+            // 
+            // txtFilter
+            // 
+            txtFilter.BackColor = Color.FromArgb(15, 15, 15);
+            txtFilter.BorderStyle = BorderStyle.FixedSingle;
+            txtFilter.Font = new Font("Nirmala UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtFilter.ForeColor = Color.White;
+            txtFilter.Location = new Point(496, 106);
+            txtFilter.Name = "txtFilter";
+            txtFilter.Size = new Size(197, 30);
+            txtFilter.TabIndex = 14;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.CornflowerBlue;
+            label3.Location = new Point(399, 108);
+            label3.Name = "label3";
+            label3.Size = new Size(90, 23);
+            label3.TabIndex = 15;
+            label3.Text = "Wyszukaj:";
             // 
             // PropertiesView
             // 
@@ -147,6 +170,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(1244, 588);
+            Controls.Add(label3);
+            Controls.Add(txtFilter);
             Controls.Add(btnBack);
             Controls.Add(dataGridProperties);
             Controls.Add(label1);
@@ -176,5 +201,7 @@
         private Button btnEditProperty;
         private Button btnAddProperty;
         private Button btnBack;
+        private TextBox txtFilter;
+        private Label label3;
     }
 }

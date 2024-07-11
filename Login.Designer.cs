@@ -38,6 +38,7 @@
             PasswordTxt = new TextBox();
             registerBtn = new Label();
             btnLogin = new Button();
+            btnCloseApp = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -127,6 +128,7 @@
             PasswordTxt.ForeColor = Color.White;
             PasswordTxt.Location = new Point(633, 220);
             PasswordTxt.Name = "PasswordTxt";
+            PasswordTxt.PasswordChar = '*';
             PasswordTxt.Size = new Size(242, 30);
             PasswordTxt.TabIndex = 5;
             // 
@@ -141,7 +143,6 @@
             registerBtn.Size = new Size(305, 22);
             registerBtn.TabIndex = 6;
             registerBtn.Text = "Nie masz konta? Kliknij, aby się zarejstrować";
-            registerBtn.Click += registerBtn_Click;
             // 
             // btnLogin
             // 
@@ -152,7 +153,16 @@
             btnLogin.TabIndex = 7;
             btnLogin.Text = "Zaloguj";
             btnLogin.UseVisualStyleBackColor = false;
-            btnLogin.Click += btnLogin_Click;
+            // 
+            // btnCloseApp
+            // 
+            btnCloseApp.BackColor = Color.CornflowerBlue;
+            btnCloseApp.Location = new Point(914, 12);
+            btnCloseApp.Name = "btnCloseApp";
+            btnCloseApp.Size = new Size(108, 32);
+            btnCloseApp.TabIndex = 8;
+            btnCloseApp.Text = "Zamknij";
+            btnCloseApp.UseVisualStyleBackColor = false;
             // 
             // Login
             // 
@@ -160,6 +170,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(1034, 470);
+            Controls.Add(btnCloseApp);
             Controls.Add(btnLogin);
             Controls.Add(registerBtn);
             Controls.Add(PasswordTxt);
@@ -193,5 +204,6 @@
         private PictureBox pictureBox1;
         private Button btnLogin;
         private Label label5;
+        private Button btnCloseApp;
     }
 }

@@ -26,6 +26,8 @@ namespace YourProply
             btnGenerateLeaseAgreement.Click += (s, e) => GenerateLeaseAgreementClick?.Invoke(this, EventArgs.Empty);
             btnSendEmail.Click += (s, e) => SendEmailClick?.Invoke(this, EventArgs.Empty);
             btnChatAI.Click += (s, e) => OpenChatbotClick?.Invoke(this, EventArgs.Empty);
+            btnLogout.Click += (s, e) => LogoutClick?.Invoke(this, EventArgs.Empty); 
+
 
         }
 
@@ -35,6 +37,7 @@ namespace YourProply
         public event EventHandler GenerateLeaseAgreementClick;
         public event EventHandler SendEmailClick;
         public event EventHandler OpenChatbotClick;
+        public event EventHandler LogoutClick;
         public User LoggedInUser => _loggedInUser;
 
         public new void Hide()
