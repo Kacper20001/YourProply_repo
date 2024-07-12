@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YourProply.Entities;
 using Microsoft.EntityFrameworkCore;
-using YourProply.Views;
+using YourProply.Entities;
 using YourProply.Services;
+using YourProply.Views;
 
 namespace YourProply.Presenters
 {
@@ -17,7 +15,6 @@ namespace YourProply.Presenters
         private readonly User _loggedInUser;
         private List<Tenant> _allUsers;
         private readonly OpenAIService _openAIService;
-
 
         public UsersPresenter(IUsersView view, YourProplyDbContext context, User loggedInUser, OpenAIService openAIService)
         {
@@ -33,6 +30,9 @@ namespace YourProply.Presenters
             LoadUsers();
         }
 
+        /// <summary>
+        /// Ładuje listę wszystkich najemców należących do zalogowanego wynajmującego.
+        /// </summary>
         private void LoadUsers()
         {
             _allUsers = _context.Users
@@ -44,6 +44,9 @@ namespace YourProply.Presenters
             _view.SetUsers(_allUsers);
         }
 
+        /// <summary>
+        /// Metoda obsługująca dodawanie nowego najemcy.
+        /// </summary>
         private void OnAddUserClick(object sender, EventArgs e)
         {
             var addTenantView = new AddTenantView(_context.Properties.Where(p => p.UserId == _loggedInUser.UserId).ToList());
@@ -52,6 +55,9 @@ namespace YourProply.Presenters
             addTenantView.ShowDialog();
         }
 
+        /// <summary>
+        /// Metoda obsługująca edytowanie wybranego najemcy.
+        /// </summary>
         private void OnEditUserClick(object sender, EventArgs e)
         {
             var selectedUser = _view.GetSelectedUser();
@@ -64,10 +70,13 @@ namespace YourProply.Presenters
             }
             else
             {
-                _view.ShowMessage("Wybierz użytkownika, którego chcesz edytować");
+                _view.ShowMessage("Wybierz użytkownika, którego chcesz edytować.");
             }
         }
 
+        /// <summary>
+        /// Metoda obsługująca usuwanie wybranego najemcy.
+        /// </summary>
         private void OnDeleteUserClick(object sender, EventArgs e)
         {
             var selectedUser = _view.GetSelectedUser();
@@ -79,10 +88,13 @@ namespace YourProply.Presenters
             }
             else
             {
-                _view.ShowMessage("Wybierz użytkownika, którego chcesz usunąć");
+                _view.ShowMessage("Wybierz użytkownika, którego chcesz usunąć.");
             }
         }
 
+        /// <summary>
+        /// Metoda obsługująca filtrowanie listy najemców.
+        /// </summary>
         private void OnFilterUsers(object sender, string filterText)
         {
             if (string.IsNullOrWhiteSpace(filterText))
@@ -99,6 +111,9 @@ namespace YourProply.Presenters
             }
         }
 
+        /// <summary>
+        /// Metoda obsługująca powrót do menu.
+        /// </summary>
         private void OnBackToMenuClick(object sender, EventArgs e)
         {
             var landlordMenu = new LandlordMenu(_loggedInUser);

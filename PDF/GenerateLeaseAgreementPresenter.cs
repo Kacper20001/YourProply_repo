@@ -6,6 +6,7 @@ using System.IO;
 using YourProply.Services;
 using YourProply.Entities;
 using YourProply.Presenters;
+using YourProply.Views;
 
 namespace YourProply.PDF
 {
@@ -25,9 +26,12 @@ namespace YourProply.PDF
             _view.BackToMenuClick += OnBackToMenuClick;
             _view.GeneratePDF += GeneratePdf;
 
-
             QuestPDF.Settings.License = LicenseType.Community;
         }
+
+        /// <summary>
+        /// Metoda obsługująca powrót do menu.
+        /// </summary>
         private void OnBackToMenuClick(object sender, EventArgs e)
         {
             var landlordMenu = new LandlordMenu(_loggedInUser);
@@ -36,33 +40,60 @@ namespace YourProply.PDF
             landlordMenu.FormClosed += (s, args) => _view.Show();
             landlordMenu.Show();
         }
+
+        /// <summary>
+        /// Generowanie PDF umowy najmu.
+        /// </summary>
         public void GeneratePdf(object sender, EventArgs e)
         {
-            var model = new RentalAgreementModel
+            try
             {
-                LandlordFirstName = _view.LandlordFirstName,
-                LandlordLastName = _view.LandlordLastName,
-                LandlordDOB = _view.LandlordDOB,
-                LandlordID = _view.LandlordID,
-                TenantFirstName = _view.TenantFirstName,
-                TenantLastName = _view.TenantLastName,
-                TenantDOB = _view.TenantDOB,
-                TenantID = _view.TenantID,
-                PropertyName = _view.PropertyName,
-                PropertyAddress = _view.PropertyAddress,
-                PropertyType = _view.PropertyType,
-                RentalAmount = _view.RentalAmount,
-                RentalStartDate = _view.RentalStartDate,
-                RentalEndDate = _view.RentalEndDate
-            };
+                // Walidacja danych
+                if (string.IsNullOrWhiteSpace(_view.LandlordFirstName) || string.IsNullOrWhiteSpace(_view.LandlordLastName) ||
+                    string.IsNullOrWhiteSpace(_view.LandlordDOB) || string.IsNullOrWhiteSpace(_view.LandlordID) ||
+                    string.IsNullOrWhiteSpace(_view.TenantFirstName) || string.IsNullOrWhiteSpace(_view.TenantLastName) ||
+                    string.IsNullOrWhiteSpace(_view.TenantDOB) || string.IsNullOrWhiteSpace(_view.TenantID) ||
+                    string.IsNullOrWhiteSpace(_view.PropertyName) || string.IsNullOrWhiteSpace(_view.PropertyAddress) ||
+                    string.IsNullOrWhiteSpace(_view.PropertyType) || string.IsNullOrWhiteSpace(_view.RentalAmount) ||
+                    string.IsNullOrWhiteSpace(_view.RentalStartDate) || string.IsNullOrWhiteSpace(_view.RentalEndDate))
+                {
+                    _view.ShowMessage("Proszę uzupełnić wszystkie pola.");
+                    return;
+                }
 
-            var document = CreateRentalAgreementDocument(model);
-            string filePath = "Umowa_najmu.pdf";
-            document.GeneratePdf(filePath);
+                var model = new RentalAgreementModel
+                {
+                    LandlordFirstName = _view.LandlordFirstName,
+                    LandlordLastName = _view.LandlordLastName,
+                    LandlordDOB = _view.LandlordDOB,
+                    LandlordID = _view.LandlordID,
+                    TenantFirstName = _view.TenantFirstName,
+                    TenantLastName = _view.TenantLastName,
+                    TenantDOB = _view.TenantDOB,
+                    TenantID = _view.TenantID,
+                    PropertyName = _view.PropertyName,
+                    PropertyAddress = _view.PropertyAddress,
+                    PropertyType = _view.PropertyType,
+                    RentalAmount = _view.RentalAmount,
+                    RentalStartDate = _view.RentalStartDate,
+                    RentalEndDate = _view.RentalEndDate
+                };
 
-            _view.ShowMessage($"PDF został wygenerowany w: {Path.GetFullPath(filePath)}");
+                var document = CreateRentalAgreementDocument(model);
+                string filePath = "Umowa_najmu.pdf";
+                document.GeneratePdf(filePath);
+
+                _view.ShowMessage($"PDF został wygenerowany w: {Path.GetFullPath(filePath)}");
+            }
+            catch (Exception ex)
+            {
+                _view.ShowMessage($"Błąd podczas generowania PDF: {ex.Message}");
+            }
         }
 
+        /// <summary>
+        /// Tworzenie dokumentu umowy najmu.
+        /// </summary>
         private IDocument CreateRentalAgreementDocument(RentalAgreementModel model)
         {
             return Document.Create(container =>
@@ -134,14 +165,14 @@ namespace YourProply.PDF
                                 .FontSize(14)
                                 .Bold());
 
-                            column.Item().Element(Container => Container.Text("Umowa zostaje zawarta na czas określony od dnia {model.RentalStartDate} do dnia {model.RentalEndDate}.")
+                            column.Item().Element(Container => Container.Text($"Umowa zostaje zawarta na czas określony od dnia {model.RentalStartDate} do dnia {model.RentalEndDate}.")
                                 .FontSize(14));
 
                             column.Item().PaddingTop(20).Element(Container => Container.Text("§ 3. Czynsz Najmu")
                                 .FontSize(14)
                                 .Bold());
 
-                            column.Item().Element(Container => Container.Text("Najemca zobowiązuje się do zapłaty Wynajmującemu czynszu najmu w kwocie {model.RentalAmount} zł miesięcznie, płatnego do 10. dnia każdego miesiąca.")
+                            column.Item().Element(Container => Container.Text($"Najemca zobowiązuje się do zapłaty Wynajmującemu czynszu najmu w kwocie {model.RentalAmount} zł miesięcznie, płatnego do 10. dnia każdego miesiąca.")
                                 .FontSize(14));
 
                             column.Item().PaddingTop(20).Element(Container => Container.Text("§ 4. Obowiązki Stron")

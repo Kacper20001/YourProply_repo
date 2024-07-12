@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Linq;
 using YourProply.Entities;
 using YourProply.PDF;
@@ -28,9 +27,11 @@ namespace YourProply.Presenters
             _view.OpenChatbotClick += ShowChatbotView;
             _view.LogoutClick += Logout;
             _view.ManageUsersClick += ShowUsersView;
-
         }
 
+        /// <summary>
+        /// Metoda pokazująca widok nieruchomości.
+        /// </summary>
         private void ShowPropertiesView(object sender, EventArgs e)
         {
             var propertiesView = new PropertiesView(_loggedInUser);
@@ -39,6 +40,10 @@ namespace YourProply.Presenters
             propertiesView.FormClosed += (s, args) => _view.Show();
             propertiesView.Show();
         }
+
+        /// <summary>
+        /// Metoda pokazująca widok użytkowników.
+        /// </summary>
         private void ShowUsersView(object sender, EventArgs e)
         {
             var usersView = new UsersView(_loggedInUser);
@@ -48,6 +53,9 @@ namespace YourProply.Presenters
             usersView.Show();
         }
 
+        /// <summary>
+        /// Metoda pokazująca widok konta.
+        /// </summary>
         private void ShowAccountView(object sender, EventArgs e)
         {
             var accountView = new LandlordAccountView(_loggedInUser, _context);
@@ -57,8 +65,9 @@ namespace YourProply.Presenters
             accountView.Show();
         }
 
-        
-
+        /// <summary>
+        /// Metoda pokazująca widok genrowania umowy najmu.
+        /// </summary>
         private void btnGenerateLeaseAgreement_Click(object sender, EventArgs e)
         {
             var generateLeaseAgreementView = new GenerateLeaseAgreementForm();
@@ -68,6 +77,9 @@ namespace YourProply.Presenters
             generateLeaseAgreementView.Show();
         }
 
+        /// <summary>
+        /// Metoda pokazująca widok wysyłania emaili.
+        /// </summary>
         private void ShowSendEmailView(object sender, EventArgs e)
         {
             var tenants = _context.Users.OfType<Tenant>().Where(t => t.LandlordId == _loggedInUser.UserId).ToList();
@@ -79,6 +91,10 @@ namespace YourProply.Presenters
             _view.Hide();
             sendEmailView.Show();
         }
+
+        /// <summary>
+        /// Metoda pokazująca widok chatbota.
+        /// </summary>
         private void ShowChatbotView(object sender, EventArgs e)
         {
             var chatbotView = new ChatbotView();
@@ -87,6 +103,10 @@ namespace YourProply.Presenters
             _view.Hide();
             chatbotView.Show();
         }
+
+        /// <summary>
+        /// Metoda wylogowująca użytkownika.
+        /// </summary>
         private void Logout(object sender, EventArgs e)
         {
             var loginView = new Login();
@@ -95,7 +115,5 @@ namespace YourProply.Presenters
             loginView.FormClosed += (s, args) => _view.Show();
             loginView.Show();
         }
-        
-
     }
 }

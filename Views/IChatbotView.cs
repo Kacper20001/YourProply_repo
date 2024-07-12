@@ -15,5 +15,7 @@ namespace YourProply.Views
         void SetAnswer(string answer);
         void Show();
         void Hide();
+        void ShowMessage(string message);
+
     }
 }

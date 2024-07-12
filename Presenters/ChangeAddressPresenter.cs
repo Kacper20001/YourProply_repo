@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourProply.Entities;
 using YourProply.Views;
 
@@ -22,6 +19,9 @@ namespace YourProply.Presenters
             _view.SaveClick += OnSaveClick;
         }
 
+        /// <summary>
+        /// Metoda obsługująca zdarzenie zapisu zmiany adresu.
+        /// </summary>
         private void OnSaveClick(object sender, EventArgs e)
         {
             var updatedAddress = _view.UpdatedAddress;
@@ -41,17 +41,17 @@ namespace YourProply.Presenters
 
                     _context.Addresses.Update(existingAddress);
                     _context.SaveChanges();
-                    _view.ShowMessage("Address updated successfully.");
+                    _view.ShowMessage("Zapisano pomyślnie");
                     _view.Close();
                 }
                 else
                 {
-                    _view.ShowMessage("Address not found.");
+                    _view.ShowMessage("Nie znaleziono adresu.");
                 }
             }
             else
             {
-                _view.ShowMessage("Please fill in all required fields.");
+                _view.ShowMessage("Proszę uzupełnić wymagane pola.");
             }
         }
     }

@@ -56,7 +56,7 @@ namespace YourProply
             var user = _context.Users.Include(u => u.Address).FirstOrDefault(u => u.UserId == _loggedInUser.UserId);
             if (user == null)
             {
-                ShowMessage("User not found.");
+                ShowMessage("Nie znaleziono użytkownika.");
                 return;
             }
 

@@ -41,5 +41,9 @@ namespace YourProply
         {
             base.Hide();
         }
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
     }
 }

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using YourProply.Views;
 
@@ -24,31 +19,18 @@ namespace YourProply
         public event EventHandler AlreadyHaveAccountClick;
 
         public string UserName => txtUserName.Text;
-
         public string FirstName => txtFirstName.Text;
-
         public string LastName => txtLastName.Text;
-
         public DateTime DateOfBirth => dtpBirthDate.Value;
-
         public string IdNumber => txtIdNumber.Text;
-
         public string Email => txtEmail.Text;
-
         public string Password => txtPassword.Text;
-
         public string ConfirmPassword => txtConfirmPassword.Text;
-
         public string Street => txtStreet.Text;
-
         public string Number => txtHouseNumber.Text;
-
         public string City => txtCity.Text;
-
         public string PostalCode => txtPostalCode.Text;
-
         public string Province => txtProvince.Text;
-
         public string State => txtState.Text;
 
         public void ShowMessage(string message)
@@ -87,5 +69,4 @@ namespace YourProply
             base.Close();
         }
     }
-
 }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourProply.Entities;
 using YourProply.Views;
 
@@ -22,31 +18,47 @@ namespace YourProply.Presenters
             _view.SaveClick += OnSaveClick;
             _view.CloseClick += OnCloseClick;
         }
+
+        /// <summary>
+        /// Metoda obsługująca zapisanie nieruchomości.
+        /// </summary>
         private void OnSaveClick(object sender, EventArgs e)
         {
             var property = _view.Property;
             var address = _view.Address;
+
             if (property != null && address != null)
             {
-                property.Address = address;
-                property.UserId = _loggedInUser.UserId;
-                if (property.PropertyId == 0)
+                try
                 {
-                    _context.Properties.Add(property);
-                }
-                else
-                {
-                    _context.Properties.Update(property);
-                }
+                    property.Address = address;
+                    property.UserId = _loggedInUser.UserId;
+                    if (property.PropertyId == 0)
+                    {
+                        _context.Properties.Add(property);
+                    }
+                    else
+                    {
+                        _context.Properties.Update(property);
+                    }
                     _context.SaveChanges();
-                    _view.ShowMessage("Nieruchomość zapisana pomyślnie");
+                    _view.ShowMessage("Nieruchomość zapisana pomyślnie.");
                     _view.Close();
+                }
+                catch (Exception ex)
+                {
+                    _view.ShowMessage($"Błąd podczas zapisywania nieruchomości: {ex.Message}");
+                }
             }
             else
             {
-                _view.ShowMessage("Proszę uzupełnić wszystkie pola");
+                _view.ShowMessage("Proszę uzupełnić wszystkie pola.");
             }
         }
+
+        /// <summary>
+        /// Metoda obsługująca zamknięcie formularza.
+        /// </summary>
         private void OnCloseClick(object sender, EventArgs e)
         {
             _view.Close();

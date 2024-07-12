@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YourProply.Entities;
-using YourProply.Views;
 using YourProply.Services;
-
+using YourProply.Views;
 
 namespace YourProply.Presenters
 {
@@ -28,6 +24,9 @@ namespace YourProply.Presenters
             _view.BackToMenuClick += OnBackToMenuClick;
         }
 
+        /// <summary>
+        /// Metoda obsługująca zmianę hasła.
+        /// </summary>
         private void OnChangePasswordClick(object sender, EventArgs e)
         {
             var changePasswordView = new ChangePasswordView(_loggedInUser);
@@ -35,12 +34,19 @@ namespace YourProply.Presenters
             changePasswordView.ShowDialog();
         }
 
+        /// <summary>
+        /// Metoda obsługująca zmianę adresu.
+        /// </summary>
         private void OnChangeAddressClick(object sender, EventArgs e)
         {
             var changeAddressView = new ChangeAddressView(_loggedInUser);
             var changeAddressPresenter = new ChangeAddressPresenter(changeAddressView, _context, _loggedInUser);
             changeAddressView.ShowDialog();
         }
+
+        /// <summary>
+        /// Metoda obsługująca powrót do menu.
+        /// </summary>
         private void OnBackToMenuClick(object sender, EventArgs e)
         {
             var landlordMenu = new LandlordMenu(_loggedInUser);

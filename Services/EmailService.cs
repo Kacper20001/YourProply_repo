@@ -1,4 +1,5 @@
 ﻿using MimeKit;
+using System;
 using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MailKit.Security;
@@ -20,6 +21,9 @@ namespace YourProply.Services
             _password = password;
         }
 
+        /// <summary>
+        /// Wysyła email asynchronicznie.
+        /// </summary>
         public async Task SendEmailAsync(string to, string subject, string body)
         {
             var message = new MimeMessage();
@@ -39,9 +43,9 @@ namespace YourProply.Services
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Failed to send email: {ex.Message}");
-                    Console.WriteLine($"SMTP Server: {_smtpServer}, Port: {_smtpPort}, Username: {_username}, Password: {_password}");
-                    throw new InvalidOperationException("Error sending email w EmailService", ex);
+                    Console.WriteLine($"Bład w wysłaniu: {ex.Message}");
+                    Console.WriteLine($"SMTP Server: {_smtpServer}, Port: {_smtpPort}, Nazwa: {_username}, Hasło: {_password}");
+                    throw new InvalidOperationException("Bład w wysłaniu w EmailService", ex);
                 }
             }
         }

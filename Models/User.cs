@@ -6,7 +6,8 @@ namespace YourProply.Entities
     public enum UserType
     {
         Landlord,
-        Tenant
+        Tenant,
+        field
     }
 
     public abstract class User
